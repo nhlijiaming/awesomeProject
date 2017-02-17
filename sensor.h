@@ -5,6 +5,7 @@
 2:real map(grids ID and position)
 3:distance between each robot and boundary &stop and resume command
 4:distance between each robot and obstacle & stop and resume command*/
+
 SC_MODULE(sensor){
 	//sc_in <int> vertical;
 	//sc_in <int> horizon;

@@ -1,8 +1,7 @@
 #include "systemc.h"
-#include "sensor.h"
+#include "robot.h"
 
-void sensor::dosens(){
+void robot::assignment(){
 
 
-		if 
 }

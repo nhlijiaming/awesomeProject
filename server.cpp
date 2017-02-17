@@ -1,8 +1,6 @@
 #include "systemc.h"
-#include "sensor.h"
+#include "server.h"
 
-void sensor::dosens(){
+void server::assignment(){
 
-
-		if 
 }

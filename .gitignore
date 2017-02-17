@@ -1,3 +1,9 @@
+Debug
+*.suo
+*.vcxproj
+*.filters
+*.user
+
 # Compiled Object files
 *.slo
 *.lo

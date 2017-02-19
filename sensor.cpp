@@ -2,34 +2,16 @@
 #include "sensor.h"
 #include "environment.h"
 
-void sensor::dosens(){
 
-		/*human moving*/
-		if (n % 2 == 0){
-			//human 1
-			if (y_human1 < -0.025) 	y_human1 = y_human1 + humsp1 / 20;
-			else if (x_human1 > 0.5)	x_human1 = x_human1 + humsp1 / 20;
-			else n = n + 1;
-		}
-		else {
-			if (x_human1 < 6.975) 	x_human1 = x_human1 + humsp1 / 20;
-			else if (y_human1 > -3.975)	y_human1 = y_human1 + humsp1 / 20;
-			else n = n + 1;
-		}
-		//human 0
-		if (m % 2 == 0){
-			if (x_human0 > 0.025) x_human0 = x_human0 - humsp0 / 20;
-			else m = m + 1;
-		}
-		else {
-			if (x_human0 < 6.975) x_human0 = x_human0 + humsp0 / 20;
-			else m = m + 1;
-		}
+void sensor::dosens(){
+	struct motionData *s, *r;
+	extern environment envir;
 
 
 		/*human detection*/
 		r = envir.getRobotLocation(0);
-		obstacle = sqrt((r->location[0] - x_human0) ^ 2 + (r->location[1] - y_human0) ^ 2));
+		s = envir.getHuamnLocation(0);
+		obstacle = sqrt((r->location[0] - s->location[0]) * (r->location[0] - s->location[0]) + (r->location[1] - s->location[1]) * (r->location[1] - s->location[1]));
 		/*obstacle calculation*/
 		if (obstacle <= 0.5)	v = 0;
 		else v = 1;
@@ -40,7 +22,7 @@ void sensor::dosens(){
 
 		
 
-	}
 }
+
 
 

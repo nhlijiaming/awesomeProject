@@ -6,7 +6,7 @@ environment::environment(void)
 {
 	cout << "constructing class \"environment\"" << endl;
 
-	/*grid map*/
+	/*Grid Map*/
 	gridMap[0][0] = 1;
 	gridMap[0][1] = 0;
 	gridMap[0][2] = 0;
@@ -106,6 +106,9 @@ environment::environment(void)
 
 	robot[0].location[0] = 0.5;
 	robot[0].location[1] = -0.5;
+
+	// robot[1].location[0] = 0.5;
+	// robot[1].location[1] = -0.5;
 }
 
 int (*environment::getMap(void))[9]{

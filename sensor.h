@@ -12,7 +12,7 @@ SC_MODULE(sensor){
 	//sc_in <float> humsp1, humsp2;
 
 	sc_in <bool> clock;
-	sc_in <float> range;
+	//sc_in <float> range;
 	sc_in <bool> in_stop;
 	sc_out <float> out_stop;
 	sc_out <bool> res;
@@ -20,17 +20,17 @@ SC_MODULE(sensor){
 	int grid_map[4][7];		//2-D arry 
 	float robot_map[2][5];
 	float robsp;			//robot speed
-	float humsp1, humsp2;	//human speed
+	float humsp0, humsp1;	//human speed
 	float obstacle;
 	bool stop_, res_;
-	float x_human1, x_human2, y_human2; //human1,2's location
-	int n = 0;
+	float x_human0, x_human1, y_human1; //human1,2's location
+	int n,m;//for human lacation calculation
 
 	void dosens();
 	SC_CTOR(sensor){
 		robsp = 1;
-		humsp1 = 0.5;
-		humsp2 = 1.5;
+		humsp0 = 0.5;
+		humsp1 = 1.5;
 
 		/*grid map*/
 		grid_map[0][0] = 1;

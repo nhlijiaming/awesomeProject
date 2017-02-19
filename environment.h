@@ -1,18 +1,29 @@
-#include "systemc.h"
+#ifndef __ENVIR__H
+#define __ENVIR__H
 
-/*
-Functions:
-1.
-2.
-3.
-4.
-*/
+#define numberOfRobots 1
+#define numberOfHumans 2
 
-SC_MODULE(environment){
-	sc_in_clk clock;
-	void assignment();
-	SC_CTOR(environment){
-		SC_METHOD(assignment);
-		sensitive << clock.pos();
-	}
+struct motionData
+{
+	int direction;
+	float location[2];
 };
+
+class environment
+{
+private:
+	struct motionData human[numberOfHumans];
+	struct motionData robot[numberOfRobots];
+
+public:
+	int* getMap(void);
+	int getNumberOfHumans(void);
+	int getNumberOfRobots(void);
+	struct motionData* getHuamnLocation(int n);
+	void setHuamnLocation(int n, struct motionData* motionData);
+	struct motionData* getRobotLocation(int n);
+	void setRobotLocation(int n, struct motionData* motionData);
+}
+
+#endif

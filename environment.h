@@ -26,7 +26,7 @@ public:
 	int getNumberOfHumans(void);
 	int getNumberOfRobots(void);
 	struct motionData* getHuamnLocation(int n);
-	void setHuamnLocation(int n, struct motionData* motionData);
+	void setHumanLocation(int n, struct motionData* motionData);
 	struct motionData* getRobotLocation(int n);
 	void setRobotLocation(int n, struct motionData* motionData);
 	void move(struct motionData* motionData, float distance);

@@ -11,6 +11,8 @@ SC_MODULE(robot){
 	sc_in<float> velocity;
 	sc_in<int> serialNumber;
 	float v;
+	int n;
+
 	void assignment();
 	SC_CTOR(robot){
 		v = 1.0; // velocity of the robot

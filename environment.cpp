@@ -4,8 +4,6 @@
 // Constructor
 environment::environment(void)
 {
-	cout << "constructing class \"environment\"" << endl;
-
 	/*Grid Map*/
 	gridMap[0][0] = 1;
 	gridMap[0][1] = 0;

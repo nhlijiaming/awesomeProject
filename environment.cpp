@@ -151,3 +151,27 @@ void environment::setRobotLocation(int n, struct motionData* motionData)
 	return;
 }
 
+void environment::move(struct motionData* object, float deltaDistance)
+{
+	int direction = object->direction;
+
+	if (direction == 0)
+	{
+		object->location[1] += deltaDistance;
+	}
+	else if (direction == 1)
+	{
+		object->location[1] -= deltaDistance;
+	}
+	else if (direction == 2)
+	{
+		object->location[0] -= deltaDistance;
+	}
+	else if (direction == 3)
+	{
+		object->location[0] += deltaDistance;
+	}
+	return;
+}
+
+

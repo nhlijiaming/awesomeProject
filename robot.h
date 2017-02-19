@@ -1,4 +1,9 @@
+#ifndef __ROBOT_H
+#define __ROBOT_H
 #include "systemc.h"
+#include "environment.h"
+
+extern environment envir;
 
 SC_MODULE(robot){
 	sc_in_clk clock;
@@ -14,3 +19,5 @@ SC_MODULE(robot){
 		dont_initialize();
 	}
 };
+
+#endif

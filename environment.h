@@ -2,7 +2,7 @@
 #define __ENVIR__H
 
 #define numberOfGrids 10
-#define numberOfRobots 2
+#define numberOfRobots 1
 #define numberOfHumans 2
 
 #define period 0.05
@@ -29,6 +29,7 @@ public:
 	void setHuamnLocation(int n, struct motionData* motionData);
 	struct motionData* getRobotLocation(int n);
 	void setRobotLocation(int n, struct motionData* motionData);
+	void move(struct motionData* motionData, float distance);
 };
 
 #endif

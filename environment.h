@@ -5,7 +5,6 @@
 #define numberOfRobots 1
 #define numberOfHumans 2
 
-
 struct motionData
 {
 	int direction;
@@ -16,18 +15,18 @@ class environment
 {
 private:
 	int gridMap[numberOfGrids][9];
-
 	struct motionData human[numberOfHumans];
 	struct motionData robot[numberOfRobots];
-	void environment(void);
+
 public:
-	int* getMap(void);
+	environment(void);
+	int (*getMap(void))[9];
 	int getNumberOfHumans(void);
 	int getNumberOfRobots(void);
 	struct motionData* getHuamnLocation(int n);
 	void setHuamnLocation(int n, struct motionData* motionData);
 	struct motionData* getRobotLocation(int n);
 	void setRobotLocation(int n, struct motionData* motionData);
-}
+};
 
 #endif

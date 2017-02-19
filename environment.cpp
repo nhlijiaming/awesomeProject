@@ -2,7 +2,7 @@
 #include "environment.h"
 
 // Constructor
-void environment(void)
+environment::environment(void)
 {
 	cout << "constructing class \"environment\"" << endl;
 
@@ -108,26 +108,26 @@ void environment(void)
 	robot[0].location[1] = -0.5;
 }
 
-int* environment::getMap(){
+int (*environment::getMap(void))[9]{
 	return gridMap;
 }
 
-int getNumberOfHumans(void)
+int environment::getNumberOfHumans(void)
 {
 	return numberOfHumans;
 }
 
-int getNumberOfRobots(void)
+int environment::getNumberOfRobots(void)
 {
 	return numberOfRobots;
 }
 
-struct motionData* getHuamnLocation(int n)
+struct motionData* environment::getHuamnLocation(int n)
 {
-	return human[n];
+	return &human[n];
 }
 
-void setHuamnLocation(int n, struct motionData* motionData)
+void environment::setHuamnLocation(int n, struct motionData* motionData)
 {
 	human[n].direction = motionData->direction;
 	human[n].location[0] = motionData->location[0];
@@ -135,12 +135,12 @@ void setHuamnLocation(int n, struct motionData* motionData)
 	return;
 }
 
-struct motionData* getRobotLocation(int n)
+struct motionData* environment::getRobotLocation(int n)
 {
-	return robot[n];
+	return &robot[n];
 }
 
-void setRobotLocation(int n, struct motionData* motionData)
+void environment::setRobotLocation(int n, struct motionData* motionData)
 {
 	robot[n].direction = motionData->direction;
 	robot[n].location[0] = motionData->location[0];

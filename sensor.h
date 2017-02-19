@@ -6,7 +6,6 @@
 4:distance between each robot and obstacle & stop and resume command*/
 
 SC_MODULE(sensor){
-<<<<<<< HEAD
 	//sc_in <int> vertical;
 	//sc_in <int> horizon;
 	//sc_in <int> robot_num;
@@ -20,16 +19,15 @@ SC_MODULE(sensor){
 
 	int grid_map[4][7];		//2-D arry 
 	float robot_map[2][5];
-	float robsp;			//robot speed
 	float humsp0, humsp1;	//human speed
 	float obstacle;
-	bool stop_, res_;
-	float x_human0, x_human1, y_human1; //human1,2's location
+	bool v;
+	float x_human0, y_human0=-0.5,x_human1, y_human1; //human1,2's location
 	int n,m;//for human lacation calculation
 
 	void dosens();
 	SC_CTOR(sensor){
-		robsp = 1;
+		v = 1;
 		humsp0 = 0.5;
 		humsp1 = 1.5;
 
@@ -129,11 +127,6 @@ SC_MODULE(sensor){
 		
 
 
-=======
-	sc_in_clk clock;
-	void dosens();
-	SC_CTOR(sensor){
->>>>>>> dev_jeff
 		SC_METHOD(dosens);
 		sensitive << clock.pos();
 	}

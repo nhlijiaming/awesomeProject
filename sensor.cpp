@@ -1,9 +1,9 @@
 #include "systemc.h"
 #include "sensor.h"
+#include "environment.h"
 
 void sensor::dosens(){
-<<<<<<< HEAD
-	void robot::assignment(){
+
 		/*human moving*/
 		if (n % 2 == 0){
 			//human 1
@@ -28,17 +28,19 @@ void sensor::dosens(){
 
 
 		/*human detection*/
-		obstacle=
+		r = envir.getRobotLocation(0);
+		obstacle = sqrt((r->location[0] - x_human0) ^ 2 + (r->location[1] - y_human0) ^ 2));
 		/*obstacle calculation*/
 		if (obstacle <= 0.5)	v = 0;
 		else v = 1;
 
 
+
 			
-=======
->>>>>>> dev_jeff
 
 		
 
 	}
 }
+
+

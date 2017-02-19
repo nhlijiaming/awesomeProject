@@ -1,17 +1,10 @@
 #include "systemc.h"
 
-/*
-Functions:
-1.
-2.
-3.
-4.
-*/
-
 SC_MODULE(robot){
 	sc_in_clk clock;
 	sc_in<int> direction;
-	sc_in<int> velocity;
+	sc_in<float> velocity;
+	sc_in<int> serialNumber;
 	float v;
 	void assignment();
 	SC_CTOR(robot){

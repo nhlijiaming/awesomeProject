@@ -2,6 +2,7 @@
 #include "sensor.h"
 
 void sensor::dosens(){
+<<<<<<< HEAD
 	void robot::assignment(){
 		/*human moving*/
 		if (n % 2 == 0){
@@ -34,10 +35,10 @@ void sensor::dosens(){
 
 
 			
+=======
+>>>>>>> dev_jeff
 
 		
 
 	}
 }
-
-

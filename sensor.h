@@ -6,6 +6,7 @@
 4:distance between each robot and obstacle & stop and resume command*/
 
 SC_MODULE(sensor){
+<<<<<<< HEAD
 	//sc_in <int> vertical;
 	//sc_in <int> horizon;
 	//sc_in <int> robot_num;
@@ -128,6 +129,11 @@ SC_MODULE(sensor){
 		
 
 
+=======
+	sc_in_clk clock;
+	void dosens();
+	SC_CTOR(sensor){
+>>>>>>> dev_jeff
 		SC_METHOD(dosens);
 		sensitive << clock.pos();
 	}

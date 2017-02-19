@@ -20,6 +20,6 @@ SC_MODULE(robot){
 		v = 1.0; // velocity of the robot
 		SC_METHOD(assignment);
 		sensitive << clock.pos();
-		dont_initilization();
+		dont_initialize();
 	}
 };

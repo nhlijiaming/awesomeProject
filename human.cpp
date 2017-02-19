@@ -1,12 +1,15 @@
 #include "systemc.h"
-#include "robot.h"
+#include "human.h"
 
-void robot::assignment(){
-
+void human::assignment(){
 
 }
 
-void robot::setVelocity(int velocity){
+void human::setVelocity(int velocity){
 	v = velocity;
+<<<<<<< HEAD
 
 }
+=======
+}
+>>>>>>> dev_jeff

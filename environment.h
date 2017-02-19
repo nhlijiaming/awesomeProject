@@ -1,8 +1,10 @@
 #ifndef __ENVIR__H
 #define __ENVIR__H
 
+#define numberOfGrids 10
 #define numberOfRobots 1
 #define numberOfHumans 2
+
 
 struct motionData
 {
@@ -13,9 +15,11 @@ struct motionData
 class environment
 {
 private:
+	int gridMap[numberOfGrids][9];
+
 	struct motionData human[numberOfHumans];
 	struct motionData robot[numberOfRobots];
-
+	void environment(void);
 public:
 	int* getMap(void);
 	int getNumberOfHumans(void);

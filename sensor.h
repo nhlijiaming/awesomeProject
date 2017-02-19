@@ -23,6 +23,8 @@ SC_MODULE(sensor){
 	float humsp1, humsp2;	//human speed
 	float obstacle;
 	bool stop_, res_;
+	float x_human1, x_human2, y_human2; //human1,2's location
+	int n = 0;
 
 	void dosens();
 	SC_CTOR(sensor){

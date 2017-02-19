@@ -1,3 +1,5 @@
+#ifndef __HUMAN_H
+#define __HUMAN_H
 #include "systemc.h"
 
 /*
@@ -20,3 +22,4 @@ SC_MODULE(human){
 		sensitive << clock.pos();
 	}
 };
+#endif

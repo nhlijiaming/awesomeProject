@@ -4,13 +4,11 @@
 // Constructor
 environment::environment(void)
 {
-	cout << "constructing class \"environment\"" << endl;
-
 	/*Grid Map*/
 	gridMap[0][0] = 1;
 	gridMap[0][1] = 0;
 	gridMap[0][2] = 0;
-	gridMap[0][3] = -1;
+	gridMap[0][3] = 1;
 	gridMap[0][4] = -1;
 	gridMap[0][5] = 0;
 	gridMap[0][6] = 2;
@@ -19,7 +17,7 @@ environment::environment(void)
 	gridMap[1][0] = 2;
 	gridMap[1][1] = -1;
 	gridMap[1][2] = 0;
-	gridMap[1][3] = -2;
+	gridMap[1][3] = 2;
 	gridMap[1][4] = -1;
 	gridMap[1][5] = 1;
 	gridMap[1][6] = 3;
@@ -28,7 +26,7 @@ environment::environment(void)
 	gridMap[2][0] = 3;
 	gridMap[2][1] = -2;
 	gridMap[2][2] = 0;
-	gridMap[2][3] = -3;
+	gridMap[2][3] = 3;
 	gridMap[2][4] = -1;
 	gridMap[2][5] = 2;
 	gridMap[2][6] = 4;
@@ -37,7 +35,7 @@ environment::environment(void)
 	gridMap[3][0] = 4;
 	gridMap[3][1] = -3;
 	gridMap[3][2] = 0;
-	gridMap[3][3] = -4;
+	gridMap[3][3] = 4;
 	gridMap[3][4] = -1;
 	gridMap[3][5] = 3;
 	gridMap[3][6] = 5;
@@ -46,7 +44,7 @@ environment::environment(void)
 	gridMap[4][0] = 5;
 	gridMap[4][1] = -4;
 	gridMap[4][2] = 0;
-	gridMap[4][3] = -5;
+	gridMap[4][3] = 5;
 	gridMap[4][4] = -1;
 	gridMap[4][5] = 4;
 	gridMap[4][6] = 6;
@@ -55,7 +53,7 @@ environment::environment(void)
 	gridMap[5][0] = 6;
 	gridMap[5][1] = -5;
 	gridMap[5][2] = 0;
-	gridMap[5][3] = -6;
+	gridMap[5][3] = 6;
 	gridMap[5][4] = -1;
 	gridMap[5][5] = 5;
 	gridMap[5][6] = 7;
@@ -64,7 +62,7 @@ environment::environment(void)
 	gridMap[6][0] = 7;
 	gridMap[6][1] = -6;
 	gridMap[6][2] = 0;
-	gridMap[6][3] = -7;
+	gridMap[6][3] = 7;
 	gridMap[6][4] = -1;
 	gridMap[6][5] = 6;
 	gridMap[6][6] = 0;
@@ -73,7 +71,7 @@ environment::environment(void)
 	gridMap[7][0] = 8;
 	gridMap[7][1] = -6;
 	gridMap[7][2] = -1;
-	gridMap[7][3] = -7;
+	gridMap[7][3] = 7;
 	gridMap[7][4] = -2;
 	gridMap[7][5] = 0;
 	gridMap[7][6] = 0;
@@ -82,7 +80,7 @@ environment::environment(void)
 	gridMap[8][0] = 9;
 	gridMap[8][1] = -6;
 	gridMap[8][2] = -2;
-	gridMap[8][3] = -7;
+	gridMap[8][3] = 7;
 	gridMap[8][4] = -3;
 	gridMap[8][5] = 0;
 	gridMap[8][6] = 0;
@@ -91,7 +89,7 @@ environment::environment(void)
 	gridMap[9][0] = 10;
 	gridMap[9][1] = -6;
 	gridMap[9][2] = -3;
-	gridMap[9][3] = -7;
+	gridMap[9][3] = 7;
 	gridMap[9][4] = -4;
 	gridMap[9][5] = 0;
 	gridMap[9][6] = 0;
@@ -151,3 +149,30 @@ void environment::setRobotLocation(int n, struct motionData* motionData)
 	return;
 }
 
+void environment::move(struct motionData* object, float deltaDistance)
+{
+	int direction = object->direction;
+
+	if (direction == 0)
+	{
+		object->location[1] += deltaDistance;
+	}
+	else if (direction == 1)
+	{
+		object->location[1] -= deltaDistance;
+	}
+	else if (direction == 2)
+	{
+		object->location[0] -= deltaDistance;
+	}
+	else if (direction == 3)
+	{
+		object->location[0] += deltaDistance;
+	}
+	return;
+}
+
+int getGridNumber(struct motionData* motionData)
+{
+
+}

@@ -23,6 +23,7 @@ private:
 public:
 	environment(void);
 	int (*getMap(void))[9];
+	int getGridNumber(struct motionData* motionData);
 	int getNumberOfHumans(void);
 	int getNumberOfRobots(void);
 	struct motionData* getHuamnLocation(int n);

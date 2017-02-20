@@ -1,5 +1,6 @@
 #ifndef __ENVIR__H
 #define __ENVIR__H
+#include "systemc.h"
 
 #define numberOfGrids 10
 #define numberOfRobots 1
@@ -56,8 +57,8 @@ public:
 	struct motionData* getRobotLocation(int n);
 	void setRobotLocation(int n, struct motionData* motionData);
 	void move(struct motionData* motionData, float distance);
-	void timeIncrease();
-	void timeIncrease(float deltaTime);
+	void timeIncrement();
+	void timeIncrement(float deltaTime);
 	float getTime();
 };
 

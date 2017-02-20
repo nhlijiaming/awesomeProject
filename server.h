@@ -3,6 +3,8 @@
 #include "systemc.h"
 #include "environment.h"
 
+extern environment envir;
+
 SC_MODULE(server){
 	sc_in_clk clock;
 	sc_in<motionData> location;

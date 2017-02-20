@@ -12,5 +12,7 @@ SC_MODULE(sensor){
 	void dosens();
 	SC_CTOR(sensor){
 		SC_METHOD(dosens);
+		sensitive << clock.pos();
+		dont_initialize();
 	}
 };

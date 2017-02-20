@@ -195,13 +195,13 @@ int environment::getGridNumber(struct motionData* coordinate)
 	return 0;
 }
 
-void environment::timeIncrease()
+void environment::timeIncrement()
 {
 	time = time + period;
 	return;
 }
 
-void environment::timeIncrease(float deltaTime)
+void environment::timeIncrement(float deltaTime)
 {
 	time = time + deltaTime;
 	return;

@@ -1,6 +1,6 @@
 #include "systemc.h"
 #include "robot.h"
- #include "sensor.h"
+ #include "human.h"
 // #include "server.h"
 #include "environment.h"
 
@@ -8,25 +8,21 @@ environment envir;
 int sc_main(int, char **)
 {
 	struct motionData a,b,c;
-	a.location[0] = 5.4;
-	a.location[1] = -0.4;
-	b.location[0] = 3;
-	b.location[1] = -0.4;
-	c.location[0] = 3.2;
-	c.location[1] = -0.4;
-	envir.setHumanLocation(0, &a);
-	envir.setHumanLocation(1, &b);
-	envir.setRobotLocation(0, &c);
+	//extern environment envir;
 
-	sc_signal<bool>   clock;
-	sc_signal <bool>	v;
-
-	sensor sensor("sensor");
-	sensor.clock(clock);
-	sensor.v(v);
 	
-	sc_start(5, SC_NS);
-	cout << v << endl;
+	sc_signal<bool>   clock;
+	human human("HUMAN");
+	human.clock(clock);
+
+
+	clock = 0;
+	sc_start(50, SC_MS); 
+	clock = 1;
+	sc_start(50, SC_MS);
+
+
+
 	system("pause");
 	return 0;
 }

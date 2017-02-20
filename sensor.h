@@ -8,11 +8,8 @@
 SC_MODULE(sensor){
 
 	sc_in <bool> clock;
-	sc_out <bool> v;
+	sc_out <bool> obstacle;
 
-	int r, s;
-	float obstacle;
-	
 	void dosens();
 	SC_CTOR(sensor){
 		SC_METHOD(dosens);

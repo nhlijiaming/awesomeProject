@@ -4,7 +4,6 @@
 
 SC_MODULE(server){
 	sc_in_clk clock;
-	sc_in<struct motionData* >
 	void assignment();
 	SC_CTOR(server){
 		SC_METHOD(assignment);

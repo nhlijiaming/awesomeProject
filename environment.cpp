@@ -96,12 +96,15 @@ environment::environment(void)
 	gridMap[9][7] = 9;
 	gridMap[9][8] = 0;
 
+	human[0].direction = 0;
 	human[0].location[0] = 6.5;
-	human[0].location[1] = -0.5;
+	human[0].location[1] = -3.5;
 
+	human[0].direction = 0;
 	human[1].location[0] = 6.5;
 	human[1].location[1] = -3.5;
 
+	robot[0].direction = 3;
 	robot[0].location[0] = 0.5;
 	robot[0].location[1] = -0.5;
 
@@ -123,12 +126,12 @@ int environment::getNumberOfRobots(void)
 	return numberOfRobots;
 }
 
-struct motionData* environment::getHuamnLocation(int n)
+struct motionData* environment::getHumanLocation(int n)
 {
 	return &human[n];
 }
 
-void environment::setHuamnLocation(int n, struct motionData* motionData)
+void environment::setHumanLocation(int n, struct motionData* motionData)
 {
 	human[n].direction = motionData->direction;
 	human[n].location[0] = motionData->location[0];
@@ -174,5 +177,5 @@ void environment::move(struct motionData* object, float deltaDistance)
 
 int getGridNumber(struct motionData* motionData)
 {
-
+	return 0;
 }

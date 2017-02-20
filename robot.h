@@ -8,14 +8,13 @@ extern environment envir;
 SC_MODULE(robot){
 	sc_in_clk clock;
 	sc_in<int> direction;
-	sc_in<float> velocity;
+	sc_in<bool> stop;
 	sc_in<int> serialNumber;
-	float v;
-	int n;
+	float velocity;
 
 	void assignment();
 	SC_CTOR(robot){
-		v = 1.0; // velocity of the robot
+		velocity = 1.0;
 		SC_METHOD(assignment);
 		sensitive << clock.pos();
 		dont_initialize();

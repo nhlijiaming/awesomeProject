@@ -6,7 +6,7 @@
 SC_MODULE(server){
 	sc_in_clk clock;
 	sc_in<motionData> location;
-	sc_in<sc_uint> obstacle;
+	sc_in<bool> obstacle;
 	sc_out<bool> stop;
 	sc_out<int> direction;
 

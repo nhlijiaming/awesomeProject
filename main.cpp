@@ -7,55 +7,34 @@
 environment envir;
 int sc_main(int, char **)
 {
-
-	// sc_signal<int> direction, serialNumber0, serialNumber1;
-	// sc_signal<float> velocity0, velocity1;
-	// sc_signal<bool> clock;
-
-	// robot robot0("0");
-	// robot0.direction(direction);
-	// robot0.velocity(velocity0);
-	// robot0.serialNumber(serialNumber0);
-	// robot0.clock(clock);	
-
-	// direction = 3;
-	// velocity0 = 1.5;
-	// serialNumber0 = 0;
-
-	// for(int i = 0; i < 20 ; i ++)
-	// {
-	// 	clock = 0;
-	// 	sc_start(10, SC_NS);
-	// 	clock = 1;
-	// 	sc_start(10, SC_NS);
-	// }
-	// cout << "robot0 location (x,y): (" << (envir.getRobotLocation(0))->location[0] << "," << (envir.getRobotLocation(0))->location[1] << ")" << endl;
-
 	struct motionData *temp;
-	sc_signal<bool> server_clock, robot_clock;
+	sc_signal<bool> server_clock, robot_clock, sensor_clock;
 	sc_signal<motionData> r0;
-	sc_signal<sc_uint<4> > obs;
+	sc_signal<bool> obstacle;
 	sc_signal<bool> stop;
 	sc_signal<int> serialNumber;
 	sc_signal<int> direction;
-	serialNumber = 0;
 
 	server hq("SERVER");
-	// temp = envir.getRobotLocation(0);
-	// r0 = *temp;
 	hq.location(r0);
 	hq.obstacle(obs);
 	hq.clock(server_clock);
 	hq.stop(stop);
 	hq.direction(direction);
 
-	robot robot0("ROBOT");
+	robot robot0("ROBOT0");
 	robot0.direction(direction);
 	robot0.stop(stop);
 	robot0.serialNumber(serialNumber);
 	robot0.clock(robot_clock);
+	serialNumber = 0;
 
-	obs = 0;
+	sensor sensor0("SENSOR0");
+	sensor0.clock(sensor_clock);
+	sensor0.obstacle(obstacle);
+
+	human human0("HUMAN0");
+	human0.clock(human_clock);
 
 	for(int i = 0; i <= 10*20; i++)
 	{
@@ -66,6 +45,16 @@ int sc_main(int, char **)
 			cout << temp->location[0] << ", " << temp->location[1] << endl;
 		}
 
+		human_clock = 1;
+		sc_start(10, SC_NS);
+		human_clock = 0;
+		sc_start(10, SC_NS);
+
+		sensor_clock = 1;
+		sc_start(10, SC_NS);
+		sensor_clock = 0;
+		sc_start(10, SC_NS);
+
 		server_clock = 1;
 		sc_start(10, SC_NS);
 		server_clock = 0;
@@ -75,8 +64,6 @@ int sc_main(int, char **)
 		sc_start(10, SC_NS);
 		robot_clock = 0;
 		sc_start(10, SC_NS);
-
-
 	}
 
 	system("pause");

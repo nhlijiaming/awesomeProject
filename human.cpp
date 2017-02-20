@@ -4,3 +4,8 @@
 void human::assignment(){
 
 }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> origin/dev_flora

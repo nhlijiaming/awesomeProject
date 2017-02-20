@@ -175,7 +175,22 @@ void environment::move(struct motionData* object, float deltaDistance)
 	return;
 }
 
-int getGridNumber(struct motionData* motionData)
+int environment::getGridNumber(struct motionData* coordinate)
 {
-	return 0;
+	struct motionData *s;
+	extern environment envir;
+	float x, y;
+	int i;
+	x = coordinate->location[0];
+	y = coordinate->location[1];
+	for (i = 0; i < 10; i++){
+		if (y >= gridMap[0][4]){
+			if (x>=gridMap[i][1] && x<gridMap[i][3]) return gridMap[i][0];
+		}
+		else {
+			if (y<gridMap[i][2] && y>=gridMap[i][4]) return gridMap[i][0];
+		}
+	}
 }
+
+	

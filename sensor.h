@@ -6,6 +6,8 @@
 4:distance between each robot and obstacle & stop and resume command*/
 
 SC_MODULE(sensor){
+	sc_in <bool> clock;
+	sc_out <bool> obstacle;
 
 	void dosens();
 	SC_CTOR(sensor){

@@ -1,6 +1,6 @@
 #include "systemc.h"
 #include "robot.h"
-// #include "sensor.h"
+#include "sensor.h"
 #include "server.h"
 #include "environment.h"
 
@@ -79,6 +79,7 @@ int sc_main(int, char **)
 
 	}
 
+	system("pause");
 	return 0;
 }
 

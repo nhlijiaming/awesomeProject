@@ -43,6 +43,7 @@ private:
 	int gridMap[numberOfGrids][9];
 	struct motionData human[numberOfHumans];
 	struct motionData robot[numberOfRobots];
+	float time;
 
 public:
 	environment(void);
@@ -55,6 +56,9 @@ public:
 	struct motionData* getRobotLocation(int n);
 	void setRobotLocation(int n, struct motionData* motionData);
 	void move(struct motionData* motionData, float distance);
+	void timeIncrease();
+	void timeIncrease(float deltaTime);
+	float getTime();
 };
 
 #endif

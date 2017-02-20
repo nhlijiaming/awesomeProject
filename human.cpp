@@ -5,7 +5,7 @@
 void human::assignment(){
 	/*human moving*/
 
-	struct motionData a, b, c;
+	struct motionData a, b;
 	extern environment envir;
 
 	if (n % 2 == 0){
@@ -35,7 +35,6 @@ void human::assignment(){
 	b.location[1] = y_human1;
 	envir.setHumanLocation(0, &a);
 	envir.setHumanLocation(1, &b);
-	cout << a.location[0] << "," << a.location[1] << "     " << b.location[0] << "," << b.location[1] << endl;
 }
 
 

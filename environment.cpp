@@ -96,11 +96,13 @@ environment::environment(void)
 	gridMap[9][7] = 9;
 	gridMap[9][8] = 0;
 
-	human[0].direction = 0;
-	human[0].location[0] = 6.5;
-	human[0].location[1] = -3.5;
+	time = 0.0;
 
 	human[0].direction = 0;
+	human[0].location[0] = 6.5;
+	human[0].location[1] = -0.5;
+
+	human[1].direction = 0;
 	human[1].location[0] = 6.5;
 	human[1].location[1] = -3.5;
 
@@ -177,7 +179,6 @@ void environment::move(struct motionData* object, float deltaDistance)
 
 int environment::getGridNumber(struct motionData* coordinate)
 {
-	struct motionData *s;
 	extern environment envir;
 	float x, y;
 	int i;
@@ -191,6 +192,22 @@ int environment::getGridNumber(struct motionData* coordinate)
 			if (y<gridMap[i][2] && y>=gridMap[i][4]) return gridMap[i][0];
 		}
 	}
+	return 0;
 }
 
-	
+void environment::timeIncrease()
+{
+	time = time + period;
+	return;
+}
+
+void environment::timeIncrease(float deltaTime)
+{
+	time = time + deltaTime;
+	return;
+}
+
+float environment::getTime()
+{
+	return time;
+}

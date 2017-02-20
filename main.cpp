@@ -1,18 +1,14 @@
 #include "systemc.h"
 #include "robot.h"
-<<<<<<< HEAD
 #include "sensor.h"
 #include "server.h"
-=======
- #include "human.h"
-// #include "server.h"
->>>>>>> origin/dev_flora
+#include "human.h"
 #include "environment.h"
 
 environment envir;
 int sc_main(int, char **)
 {
-	// struct motionData *temp;
+	struct motionData *temp;
 	// sc_signal<bool> server_clock, robot_clock, sensor_clock;
 	// sc_signal<motionData> r0;
 	// sc_signal<bool> obstacle;
@@ -71,9 +67,6 @@ int sc_main(int, char **)
 	// 	sc_start(10, SC_NS);
 	// }
 
-	struct motionData a,b,c;
-	//extern environment envir;
-
 	sc_signal<bool>   clock;
 	human human("HUMAN");
 	human.clock(clock);
@@ -82,15 +75,17 @@ int sc_main(int, char **)
 	{
 		if (i%20 == 0)
 		{
-			temp = envir.getHumanLocation(0);
-			cout << "human0: " << temp->location[0] << ", " << temp->location[1] << endl;
+			// temp = envir.getHumanLocation(0);
+			// cout << "@" << envir.getTime() << "s   human0: " << temp->location[0] << ", " << temp->location[1] << endl;
 			temp = envir.getHumanLocation(1);
-			cout << "human1: " << temp->location[0] << ", " << temp->location[1] << endl;
+			cout << "@" << envir.getTime() << "s   human1: " << temp->location[0] << ", " << temp->location[1] << endl;
 		}
 		clock = 0;
 		sc_start(10, SC_NS); 
 		clock = 1;
 		sc_start(10, SC_NS);
+
+		envir.timeIncrease();
 	}
 
 	system("pause");

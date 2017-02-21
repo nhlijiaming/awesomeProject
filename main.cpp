@@ -15,12 +15,100 @@ int sc_main(int, char **)
 	human human("HUMAN");
 	human.clock(clock);
 
-
 	clock = 0;
 	sc_start(50, SC_MS); 
 	clock = 1;
 	sc_start(50, SC_MS);
+	
+	clock = 0;
+	sc_start(50, SC_MS);
+	clock = 1;
+	sc_start(50, SC_MS);
 
+	clock = 0;
+	sc_start(50, SC_MS);
+	clock = 1;
+	sc_start(50, SC_MS);
+
+	clock = 0;
+	sc_start(50, SC_MS);
+	clock = 1;
+	sc_start(50, SC_MS);
+
+	clock = 0;
+	sc_start(50, SC_MS);
+	clock = 1;
+	sc_start(50, SC_MS);
+
+	clock = 0;
+	sc_start(50, SC_MS);
+	clock = 1;
+	sc_start(50, SC_MS);
+
+	clock = 0;
+	sc_start(50, SC_MS);
+	clock = 1;
+	sc_start(50, SC_MS);
+
+	clock = 0;
+	sc_start(50, SC_MS);
+	clock = 1;
+	sc_start(50, SC_MS);
+
+	clock = 0;
+	sc_start(50, SC_MS);
+	clock = 1;
+	sc_start(50, SC_MS);
+
+	clock = 0;
+	sc_start(50, SC_MS);
+	clock = 1;
+	sc_start(50, SC_MS);
+
+	clock = 0;
+	sc_start(50, SC_MS);
+	clock = 1;
+	sc_start(50, SC_MS);
+
+	clock = 0;
+	sc_start(50, SC_MS);
+	clock = 1;
+	sc_start(50, SC_MS);
+
+	clock = 0;
+	sc_start(50, SC_MS);
+	clock = 1;
+	sc_start(50, SC_MS);
+
+	clock = 0;
+	sc_start(50, SC_MS);
+	clock = 1;
+	sc_start(50, SC_MS);
+
+	clock = 0;
+	sc_start(50, SC_MS);
+	clock = 1;
+	sc_start(50, SC_MS);
+
+	clock = 0;
+	sc_start(50, SC_MS);
+	clock = 1;
+	sc_start(50, SC_MS);
+
+	clock = 0;
+	sc_start(50, SC_MS);
+	clock = 1;
+	sc_start(50, SC_MS);
+
+	clock = 0;
+	sc_start(50, SC_MS);
+	clock = 1;
+	sc_start(50, SC_MS);
+
+	clock = 0;
+	sc_start(50, SC_MS);
+	clock = 1;
+	sc_start(50, SC_MS);
 
 
 	system("pause");

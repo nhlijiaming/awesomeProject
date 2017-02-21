@@ -5,7 +5,10 @@
 void robot::assignment(){
 	struct motionData* thisRobot = envir.getRobotLocation(serialNumber);
 	float deltaDistance = period * velocity;
-	thisRobot->direction = direction;
-	envir.move(thisRobot, deltaDistance);
+	if (!stop)
+	{
+		thisRobot->direction = direction.read();
+		envir.move(thisRobot, deltaDistance);
+	}
 	return;
 }

@@ -6,7 +6,6 @@
 4:distance between each robot and obstacle & stop and resume command*/
 
 SC_MODULE(sensor){
-
 	sc_in <bool> clock;
 	sc_out <bool> obstacle;
 
@@ -14,5 +13,6 @@ SC_MODULE(sensor){
 	SC_CTOR(sensor){
 		SC_METHOD(dosens);
 		sensitive << clock.pos();
+		dont_initialize();
 	}
 };

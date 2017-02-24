@@ -1,4 +1,5 @@
 #include "systemc.h"
+#include "environment.h"
 
 extern environment envir;
 

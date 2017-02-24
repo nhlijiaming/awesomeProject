@@ -18,22 +18,21 @@ void sensor::dosens(){
 		l1 = sqrt((r->location[0] - s->location[0]) * (r->location[0] - s->location[0]) + (r->location[1] - s->location[1]) * (r->location[1] - s->location[1]));
 		if (l1 < 0.5) obstacle = 1;
 		else obstacle = 0;
-		b = envir.getGridNumber(s);
-		if (s->direction = 0) {
-			if (abs(s->location[1] - gridMap[b][2]) < 4 * robsp) boundary = 1;
 		}
-		else if (s->direction = 1) {
-			if (abs(s->location[1] - gridMap[b][4]) < 4 * robsp) boundary = 1;
-		}
-		else if (s->direction = 2) {
-			if (abs(s->location[1] - gridMap[b][1]) < 4 * robsp) boundary = 1;
-		}
-		else {
-			if (abs(s->location[1] - gridMap[b][3]) < 4 * robsp) boundary = 1;
-		}
-
+	b = envir.getGridNumber(r);
+	if (r->direction == 0) {
+		if (abs(r->location[1] - gridMap[b - 1][2]) < 4 * period * robsp) boundary = 1;
 	}
-
+	else if (r->direction == 1) {
+		if (abs(r->location[1] - gridMap[b - 1][4]) < 4 * period * robsp) boundary = 1;
+	}
+	else if (r->direction == 2) {
+		if (abs(r->location[0] - gridMap[b - 1][1]) < 4 * period * robsp) boundary = 1;
+	}
+	else {
+		if (abs(r->location[0] - gridMap[b - 1][3]) < 4 * period * robsp) boundary = 1;
+	}
+	cout << "direction" << r->direction << endl;
 
 }
 

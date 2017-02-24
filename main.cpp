@@ -6,13 +6,15 @@
 #include "environment.h"
 
 environment envir;
+
+
 int sc_main(int, char **)
 {
-	struct motionData *temp;
+	struct motionData *temp, s;
 	struct motionData h0, h1;
 	sc_signal<bool> server_clock, robot_clock, sensor_clock, human_clock;
 	sc_signal<motionData> r0;
-	sc_signal<bool> obstacle;
+	sc_signal<bool> obstacle,boundary;
 	sc_signal<bool> stop;
 	sc_signal<int> serialNumber;
 	sc_signal<int> direction;
@@ -35,6 +37,7 @@ int sc_main(int, char **)
 	sensor sensor0("SENSOR0");
 	sensor0.clock(sensor_clock);
 	sensor0.obstacle(obstacle);
+	sensor0.boundary(boundary);
 
 	human human0("HUMAN0");
 	human0.clock(human_clock);
@@ -51,6 +54,12 @@ int sc_main(int, char **)
 	sc_trace(wf, obstacle, "obstacle");
 	sc_trace(wf, stop, "stop");
 	sc_trace(wf, direction, "direction");
+
+	s.direction = 1;
+	s.location[0] = 6.5;
+	s.location[1] = -0.83;
+	envir.setRobotLocation(0, &s);
+	//cout << "boundary" << boundary << endl;
 
 	for(int i = 0; i <= 10*20; i++)
 	{

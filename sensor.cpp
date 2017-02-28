@@ -21,16 +21,16 @@ void sensor::dosens(){
 		}
 	b = envir.getGridNumber(r);
 	if (r->direction == 0) {
-		if (abs(r->location[1] - gridMap[b - 1][2]) < 4 * period * robsp) boundary = 1;
+		if (abs(r->location[1] - gridMap[b - 1][2]) < 2 * period * robsp) boundary = 1;
 	}
 	else if (r->direction == 1) {
-		if (abs(r->location[1] - gridMap[b - 1][4]) < 4 * period * robsp) boundary = 1;
+		if (abs(r->location[1] - gridMap[b - 1][4]) < 2 * period * robsp) boundary = 1;
 	}
 	else if (r->direction == 2) {
-		if (abs(r->location[0] - gridMap[b - 1][1]) < 4 * period * robsp) boundary = 1;
+		if (abs(r->location[0] - gridMap[b - 1][1]) < 2 * period * robsp) boundary = 1;
 	}
 	else {
-		if (abs(r->location[0] - gridMap[b - 1][3]) < 4 * period * robsp) boundary = 1;
+		if (abs(r->location[0] - gridMap[b - 1][3]) < 2 * period * robsp) boundary = 1;
 	}
 }
 

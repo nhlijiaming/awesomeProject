@@ -9,6 +9,8 @@ SC_MODULE(server){
 	sc_in_clk clock;
 	sc_in<motionData> location;
 	sc_in<bool> obstacle;
+	sc_in<int>  grid_numbers;
+	sc_in<bool> boundary;
 	sc_out<bool> stop;
 	sc_out<int> direction;
 

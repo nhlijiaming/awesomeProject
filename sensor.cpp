@@ -32,8 +32,6 @@ void sensor::dosens(){
 	else {
 		if (abs(r->location[0] - gridMap[b - 1][3]) < 4 * period * robsp) boundary = 1;
 	}
-	cout << "direction" << r->direction << endl;
-
 }
 
 

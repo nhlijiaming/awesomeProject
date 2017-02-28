@@ -6,15 +6,12 @@
 extern environment envir;
 
 SC_MODULE(server){
-	sc_in_clk clock;
-	sc_in<motionData> location;
-	sc_in<bool> obstacle;
-	sc_out<bool> stop;
-	sc_out<int> direction;
+	sc_in<bool> robots_is_crossing;
+	sc_out<float> velocity;
 
 	void assignment();
 	SC_CTOR(server){
-		stop.initialize(true);
+		velocity.initialize(0.0);
 		SC_METHOD(assignment);
 		sensitive << clock.pos();
 		dont_initialize();

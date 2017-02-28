@@ -96,6 +96,18 @@ environment::environment(void)
 	gridMap[9][7] = 9;
 	gridMap[9][8] = 0;
 
+
+	gridMap[][0] = 1;
+	gridMap[][1] = 0;
+	gridMap[][2] = 0;
+	gridMap[][3] = 1;
+	gridMap[][4] = -1;
+	gridMap[][5] = 0;
+	gridMap[][6] = 2;
+	gridMap[][7] = 0;
+	gridMap[][8] = 0;
+
+
 	time = 0.0;
 
 	human[0].direction = 0;

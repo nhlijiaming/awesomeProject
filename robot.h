@@ -8,15 +8,18 @@ extern environment envir;
 SC_MODULE(robot){
 	sc_in_clk clock;
 	sc_in<int> direction;
-	sc_in<bool> stop;
-	sc_in<int> serialNumber;
-	float velocity;
+	sc_in<float> velocity;
+	sc_in<bool> near_boundry;
+	sc_in<bool> obstacle;
+	sc_out<bool> robot_is_crossing;
 
-	void assignment();
+	void motor();
+	void comm();
 	SC_CTOR(robot){
-		velocity = 1.0;
-		SC_METHOD(assignment);
+		SC_METHOD(motor);
 		sensitive << clock.pos();
+		SC_METHOD(comm);
+		sensitive << robot_is_crossing;
 		dont_initialize();
 	}
 };

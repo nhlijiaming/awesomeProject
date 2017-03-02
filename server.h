@@ -13,7 +13,6 @@ SC_MODULE(server){
 	SC_CTOR(server){
 		velocity.initialize(0.0);
 		SC_METHOD(assignment);
-		sensitive << clock.pos();
 		dont_initialize();
 	}
 };

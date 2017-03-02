@@ -20,7 +20,7 @@ void sensor::dosens(){
 		else obstacle = 0;
 	}
 
-	xcenterOfThisGrid = 0;
+	// xcenterOfThisGrid = 0;
 }
 
 

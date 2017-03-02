@@ -44,7 +44,8 @@ private:
 	int gridMap[numberOfGrids][9];
 	struct motionData human[numberOfHumans];
 	struct motionData robot[numberOfRobots];
-	int path[numberOfRobots][40];
+	int path[numberOfRobots][numberOfGrids];
+	int path_pointer[numberOfRobots];
 	float time;
 
 public:

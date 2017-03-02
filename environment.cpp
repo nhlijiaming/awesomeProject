@@ -236,7 +236,8 @@ int environment::getRobotNextGridNumber(int robotNumber)
 
 void environment::moveRobotToNextGrid(int robotNumber)
 {
-	path_pointer[robotNumber ++];
+	path_pointer[robotNumber] ++;
+	return;
 }
 
 

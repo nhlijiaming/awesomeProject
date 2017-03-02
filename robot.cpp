@@ -5,11 +5,8 @@
 void robot::motor(){
 	struct motionData* thisRobot = envir.getRobotLocation(0);
 	float deltaDistance = period * velocity.read();
-	if (!stop)
-	{
-		thisRobot->direction = direction.read();
-		envir.move(thisRobot, deltaDistance);
-	}
+	thisRobot->direction = direction.read();
+	envir.move(thisRobot, deltaDistance);
 	return;
 }
 

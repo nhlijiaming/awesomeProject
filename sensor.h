@@ -3,6 +3,7 @@
 
 extern environment envir;
 
+
 /*The modole Senor includes:
 1:the robots and humans position
 2:real map(grids ID and position)
@@ -10,7 +11,7 @@ extern environment envir;
 
 SC_MODULE(sensor){
 	sc_in <bool> clock;
-	sc_out <bool> obstacle,boundary;
+		sc_out <bool> obstacle,boundary;
 	int (*gridMap)[9];
 	void dosens();
 	SC_CTOR(sensor){

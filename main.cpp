@@ -8,13 +8,23 @@
 environment envir;
 
 
+
 int sc_main(int, char **)
 {
-	struct motionData *temp, s;
+/*	struct motionData *temp, s;
 	struct motionData h0, h1;
 	sc_signal<bool> server_clock, robot_clock, sensor_clock, human_clock;
 	sc_signal<motionData> r0;
 	sc_signal<bool> obstacle,boundary;
+*/
+//int sc_main(int, char **)
+//{
+	struct motionData *temp;
+	struct motionData h0, h1;
+	sc_signal<bool> server_clock, robot_clock, sensor_clock, human_clock;
+	sc_signal<motionData> r0;
+	sc_signal<bool> obstacle;
+
 	sc_signal<bool> stop;
 	sc_signal<int> serialNumber;
 	sc_signal<int> direction;
@@ -37,7 +47,9 @@ int sc_main(int, char **)
 	sensor sensor0("SENSOR0");
 	sensor0.clock(sensor_clock);
 	sensor0.obstacle(obstacle);
+
 	sensor0.boundary(boundary);
+
 
 	human human0("HUMAN0");
 	human0.clock(human_clock);
@@ -61,13 +73,15 @@ int sc_main(int, char **)
 	envir.setRobotLocation(0, &s);
 	//cout << "boundary" << boundary << endl;
 
-	for(int i = 0; i <= 10*20; i++)
+	//for(int i = 0; i <= 10*20; i++)
+
+	for(int i = 0; i <= 20*20; i++)
+
 	{
 		time = envir.getTime();
 		temp = envir.getRobotLocation(0);
 		h0 = *(envir.getHumanLocation(0));
 		h1 = *(envir.getHumanLocation(1));
-
 		r0 = *temp;
 		if (i%20 == 0)
 		{

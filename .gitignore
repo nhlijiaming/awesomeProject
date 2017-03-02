@@ -3,6 +3,12 @@ Debug
 *.vcxproj
 *.filters
 *.user
+<<<<<<< HEAD
+=======
+.DS*
+Makefile.*
+*.vcd
+>>>>>>> origin/jeff
 
 # Compiled Object files
 *.slo

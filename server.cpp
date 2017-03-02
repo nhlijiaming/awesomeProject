@@ -2,6 +2,7 @@
 #include "server.h"
 
 void server::assignment(){
+<<<<<<< HEAD
 
 	struct motionData robot ;
 	bool obs = obstacle;
@@ -52,3 +53,7 @@ void server::assignment(){
 	}
 	/*velocity control*/
  
+=======
+	velocity = 1.0;
+} 
+>>>>>>> origin/jeff

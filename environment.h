@@ -26,8 +26,8 @@ struct motionData
 
     inline friend void sc_trace(sc_trace_file *tf, const motionData & v, const std::string & NAME ) {
       sc_trace(tf,v.direction, NAME + ".direction");
-      sc_trace(tf,v.location[0], NAME + ".location[0]");
-      sc_trace(tf,v.location[1], NAME + ".location[1]");
+      sc_trace(tf,v.location[0], NAME + ".x");
+      sc_trace(tf,v.location[1], NAME + ".y");
     }
 
     inline friend ostream& operator << ( ostream& os,  motionData const & v ) {

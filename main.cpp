@@ -7,21 +7,12 @@
 
 environment envir;
 
-
-
 int sc_main(int, char **)
 {
-/*struct motionData *temp, s;
-		struct motionData h0, h1;
-	sc_signal<bool> server_clock, robot_clock, sensor_clock, human_clock;
-	sc_signal<motionData> r0;
-	sc_signal<bool> obstacle,boundary;
- */
-//int sc_main(int, char **)
-//{
 	struct motionData *temp,s;
+
 	struct motionData h0, h1;
-	sc_signal<bool> server_clock, robot_clock, sensor_clock, human_clock;
+	sc_signal<bool> robot_clock, sensor_clock, human_clock;
 	sc_signal<motionData> r0;
 	sc_signal<bool> obstacle, boundary;
 	sc_signal<float> velocity;
@@ -47,11 +38,10 @@ int sc_main(int, char **)
 	robot0.robot_is_crossing(near_boundry);
 	robot0.clock(robot_clock);
 
-
 	sensor sensor0("SENSOR0");
 	sensor0.clock(sensor_clock);
 	sensor0.obstacle(obstacle);
-	sensor0.robot_is_crossing(robot_is_crossing);
+	sensor0.robot_is_crossing(near_boundary);
 	sensor0.direction(direction);
 
 
@@ -62,10 +52,15 @@ int sc_main(int, char **)
 	sc_trace(wf, time, "time");
 	sc_trace(wf, robot_clock, "robot_clock");
 	sc_trace(wf, r0, "robot0");
-	sc_trace(wf, h0, "human0");
-	sc_trace(wf, h1, "human1");
+	// sc_trace(wf, h0, "human0");
+	// sc_trace(wf, h1, "human1");
 	sc_trace(wf, obstacle, "obstacle");
+	sc_trace(wf, velocity, "velocity");
+	sc_trace(wf, stop, "stop");
 	sc_trace(wf, direction, "direction");
+	sc_trace(wf, near_boundary, "near_boundary");
+	sc_trace(wf, robot_is_crossing, "robot_is_crossing");
+
 
 	s.direction = 1;
 	s.location[0] = 6.5;
@@ -76,7 +71,11 @@ int sc_main(int, char **)
 
 	//cout << "boundary" << boundary << endl;
 
-	//for(int i = 0; i <= 10*20; i++)
+
+	// s.direction = 1;
+	// s.location[0] = 6.5;
+	// s.location[1] = -0.83;
+	// envir.setRobotLocation(0, &s);
 
 	for(int i = 0; i <= 20*20; i++)
 
@@ -101,11 +100,6 @@ int sc_main(int, char **)
 		sensor_clock = 0;
 		sc_start(10, SC_NS);
 
-		server_clock = 1;
-		sc_start(10, SC_NS);
-		server_clock = 0;
-		sc_start(10, SC_NS);
-
 		robot_clock = 1;
 		sc_start(10, SC_NS);
 		robot_clock = 0;
@@ -114,8 +108,7 @@ int sc_main(int, char **)
 		envir.timeIncrement();
 	}
 	sc_close_vcd_trace_file(wf);
-	 system("pause");
-	
+	system("pause");
 	return 0;
 }
 

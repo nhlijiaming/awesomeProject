@@ -9,10 +9,10 @@ SC_MODULE(robot){
 	sc_in_clk clock;
 	sc_in<int> direction;
 	sc_in<float> velocity;
-	sc_in<bool> near_boundry;
-	sc_in<bool> near_human;
+
+	sc_in<bool> near_boundary;
+	sc_in<bool> obstacle;
 	sc_out<bool> robot_is_crossing;
-	sc_out<bool> obstacle;
 
 	void motor();
 	void comm();
@@ -20,7 +20,8 @@ SC_MODULE(robot){
 		SC_METHOD(motor);
 		sensitive << clock.pos();
 		SC_METHOD(comm);
-		sensitive << near_boundry;
+		sensitive << near_boundary.pos();
+		sensitive << near_boundary.neg();
 		dont_initialize();
 	}
 };

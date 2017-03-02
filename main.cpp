@@ -26,26 +26,33 @@ int sc_main(int, char **)
 	sc_signal<bool> obstacle, boundary;
 	sc_signal<float> velocity;
 	sc_signal<bool> stop;
-	sc_signal<int> serialNumber;
+	sc_signal<int> grid_num;
 	sc_signal<int> direction;
+	sc_signal<bool> near_boundry, near_human;
 	sc_signal<bool> robot_is_crossing;
 
 	float time;
 
 	server hq("SERVER");
-	hq.obstacle(obstacle);
+	hq.obstacle(near_human);
+	hq.robot_is_crossing(near_boundry);
 	hq.velocity(velocity);
 
 	robot robot0("ROBOT0");
 	robot0.direction(direction);
-	robot0.robot_is_crossing(robot_is_crossing);
+	robot0.velocity(velocity);
+	robot0.near_boundry(robot_is_crossing);
+	robot0.near_human(obstacle);
+	robot0.obstacle(near_human);
+	robot0.robot_is_crossing(near_boundry);
 	robot0.clock(robot_clock);
-	serialNumber = 0;
+
 
 	sensor sensor0("SENSOR0");
 	sensor0.clock(sensor_clock);
 	sensor0.obstacle(obstacle);
-	sensor0.boundary(boundary);
+	sensor0.robot_is_crossing(robot_is_crossing);
+	sensor0.direction(direction);
 
 
 	human human0("HUMAN0");
@@ -53,15 +60,11 @@ int sc_main(int, char **)
 
 	sc_trace_file *wf = sc_create_vcd_trace_file("wave");
 	sc_trace(wf, time, "time");
-	sc_trace(wf, server_clock, "server_clock");
 	sc_trace(wf, robot_clock, "robot_clock");
-	sc_trace(wf, sensor_clock, "sensor_clock");
-	sc_trace(wf, human_clock, "human_clock");
 	sc_trace(wf, r0, "robot0");
 	sc_trace(wf, h0, "human0");
 	sc_trace(wf, h1, "human1");
 	sc_trace(wf, obstacle, "obstacle");
-	sc_trace(wf, stop, "stop");
 	sc_trace(wf, direction, "direction");
 
 	s.direction = 1;

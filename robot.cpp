@@ -14,6 +14,6 @@ void robot::motor(){
 
 void robot::comm() {
 	robot_is_crossing = near_boundry;
-	//grid_num = envir.getGridNumber(0);
+	obstacle=near_human;
 	return;
 }

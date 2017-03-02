@@ -13,33 +13,42 @@ void server::assignment(){
 	bool reached=false;
 	bool stop = false;
 	bool occupied = false;
-	/*if (robot.location[0] >= 6.5 && robot.location[1] == -0.5)
+	int gridnum[numberOfRobots];
+/*	if (robot.location[0] >= 6.5 && robot.location[1] == -0.5){
 		d = 1;
-	direction = d;
-
+		direction = d;
+	}
+	*/
 	if (envir.getGridNumber(&robot) == 10)
 	{
 		reached = true;
 	}
-*/
+
+
+	for (i = 0; i < numberOfRobots; i++)
+	{
+		gridnum[i] = envir.getRobotNextGridNumber(i);
+	}
 		/*occupied detection*/
 	for (i = 0; i < numberOfRobots; i++)
 	{
 		if (boundary){
 			nextGrid = envir.getRobotNextGridNumber(i);
+			cout << "nextGrid: " << nextGrid << endl;
 			if (nextGrid == gridnum[i]){
 				occupied = true;
 			}
 			else occupied = false;
-			}
-		if (occupied || obs || reached)
+		}
+	}
+		if (occupied || obs )
 		{
 			velocity = 0;
 		}
 		else {
-			velocity == 1;
+			velocity = 1;
 			envir.moveRobotToNextGrid(0);
 		}
 	}
 	/*velocity control*/
-} 
+ 

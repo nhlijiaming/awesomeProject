@@ -10,13 +10,12 @@ extern environment envir;
 4:distance between each robot and obstacle & stop and resume command*/
 
 SC_MODULE(sensor){
-	sc_in <bool> clock;
-	sc_out <bool> obstacle,boundary;
-	int (*gridMap)[9];
+	sc_in<bool> clock;
+	sc_out<bool> obstacle;
+	sc_out<bool> robot_is_crossing;
+	sc_out<int> direction;
 
-	sc_out <bool> obstacle;
-	sc_out <bool> robot_is_crossing;
-	sc_out <int> direction;
+	int (*gridMap)[9];
 
 	void dosens();
 	SC_CTOR(sensor){

@@ -2,6 +2,7 @@
 #include "server.h"
 
 void server::assignment(){
+
 	struct motionData robot ;
 	bool obs = obstacle;
 	bool boundary = robot_is_crossing;
@@ -36,6 +37,7 @@ for (i = 0; i < numberOfRobots; i++)
 	}
 }
 	/*velocity control*/
+
 	
 
 

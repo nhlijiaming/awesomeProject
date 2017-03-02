@@ -97,7 +97,6 @@ environment::environment(void)
 	gridMap[9][8] = 0;
 
 
-<<<<<<< HEAD
 
 	/*gridMap[][0] = 1;
 	gridMap[][1] = 0;
@@ -110,8 +109,6 @@ environment::environment(void)
 	gridMap[][8] = 0;
 	*/
 
-=======
->>>>>>> origin/jeff
 	time = 0.0;
 
 	human[0].direction = 0;
@@ -251,7 +248,8 @@ int environment::getRobotNextGridNumber(int robotNumber)
 
 void environment::moveRobotToNextGrid(int robotNumber)
 {
-	path_pointer[robotNumber ++];
+	path_pointer[robotNumber] ++;
+	return;
 }
 
 

@@ -11,15 +11,13 @@ extern environment envir;
 
 SC_MODULE(sensor){
 	sc_in <bool> clock;
-<<<<<<< HEAD
-		sc_out <bool> obstacle,boundary;
+	sc_out <bool> obstacle,boundary;
 	int (*gridMap)[9];
-=======
+
 	sc_out <bool> obstacle;
 	sc_out <bool> robot_is_crossing;
 	sc_out <int> direction;
 
->>>>>>> origin/jeff
 	void dosens();
 	SC_CTOR(sensor){
 		SC_METHOD(dosens);

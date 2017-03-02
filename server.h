@@ -20,6 +20,7 @@ SC_MODULE(server){
 		
 		SC_METHOD(assignment);
 		sensitive << robot_is_crossing;
+
 		dont_initialize();
 	}
 };

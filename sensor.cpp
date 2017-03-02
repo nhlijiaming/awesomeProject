@@ -19,6 +19,8 @@ void sensor::dosens(){
 		if (distance < 0.5) obstacle = 1;
 		else obstacle = 0;
 	}
+
+	xcenterOfThisGrid = 0;
 }
 
 

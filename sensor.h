@@ -9,6 +9,7 @@ SC_MODULE(sensor){
 	sc_in <bool> clock;
 	sc_out <bool> obstacle;
 	sc_out <bool> robot_is_crossing;
+	sc_out <int> direction;
 
 	void dosens();
 	SC_CTOR(sensor){

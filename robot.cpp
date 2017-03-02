@@ -2,18 +2,23 @@
 #include "robot.h"
 #include "environment.h"
 
-
 void robot::motor(){
 	struct motionData* thisRobot = envir.getRobotLocation(0);
 	float deltaDistance = period * velocity.read();
-
-	thisRobot->direction = direction.read();
-	envir.move(thisRobot, deltaDistance);
+	// cout << velocity << " " << obstacle << " direction:" << direction.read() << endl;
+	if (!obstacle)
+	{
+		thisRobot->direction = direction.read();
+		envir.move(thisRobot, deltaDistance);
+	}
 	return;
 }
 
 void robot::comm() {
-	robot_is_crossing = near_boundry;
-	grid_num = envir.getGridNumber(0);
+	cout << "comm..." << endl;
+	robot_is_crossing.write(near_boundary.read());
+	// grid_num = envir.getGridNumber(0);
+	if (near_boundary)
+		envir.moveRobotToNextGrid(0);
 	return;
 }

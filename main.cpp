@@ -7,48 +7,46 @@
 
 environment envir;
 
-
-
 int sc_main(int, char **)
 {
-/*	struct motionData *temp, s;
-	struct motionData h0, h1;
-	sc_signal<bool> server_clock, robot_clock, sensor_clock, human_clock;
-	sc_signal<motionData> r0;
-	sc_signal<bool> obstacle,boundary;
-*/
-//int sc_main(int, char **)
-//{
+// 	int *temp;
+// 	temp = envir.getGrid(1);
+// 	cout << temp[0] << " " << temp[1] << " " << temp[2] << " " << temp[3] << " " << temp[4] << " ";
+// 	cout << temp[5] << " " << temp[6] << " " << temp[7] << " " << temp[8] << endl;
+// 	return 0;
+
+
 	struct motionData *temp;
 	struct motionData h0, h1;
-	sc_signal<bool> server_clock, robot_clock, sensor_clock, human_clock;
+	sc_signal<bool> robot_clock, sensor_clock, human_clock;
 	sc_signal<motionData> r0;
 	sc_signal<bool> obstacle;
-
 	sc_signal<bool> stop;
-	sc_signal<int> serialNumber;
 	sc_signal<int> direction;
+	sc_signal<bool> near_boundary, robot_is_crossing;
+	sc_signal<float> velocity;
+	sc_signal<int> grid_num;
 	float time;
 
 	server hq("SERVER");
-	hq.location(r0);
-	hq.obstacle(obstacle);
-	hq.clock(server_clock);
-	hq.stop(stop);
-	hq.direction(direction);
+	hq.robot_is_crossing(robot_is_crossing);
+	hq.velocity(velocity);
+	// hq.next_grid(grid_num);
 
 	robot robot0("ROBOT0");
-	robot0.direction(direction);
-	robot0.stop(stop);
-	robot0.serialNumber(serialNumber);
 	robot0.clock(robot_clock);
-	serialNumber = 0;
+	robot0.direction(direction);
+	robot0.near_boundary(near_boundary);
+	robot0.robot_is_crossing(robot_is_crossing);
+	robot0.obstacle(obstacle);
+	robot0.velocity(velocity);
+	// robot0.grid_num(grid_num);
 
 	sensor sensor0("SENSOR0");
 	sensor0.clock(sensor_clock);
 	sensor0.obstacle(obstacle);
-
-	sensor0.boundary(boundary);
+	sensor0.robot_is_crossing(near_boundary);
+	sensor0.direction(direction);
 
 
 	human human0("HUMAN0");
@@ -56,24 +54,26 @@ int sc_main(int, char **)
 
 	sc_trace_file *wf = sc_create_vcd_trace_file("wave");
 	sc_trace(wf, time, "time");
-	sc_trace(wf, server_clock, "server_clock");
 	sc_trace(wf, robot_clock, "robot_clock");
 	sc_trace(wf, sensor_clock, "sensor_clock");
 	sc_trace(wf, human_clock, "human_clock");
 	sc_trace(wf, r0, "robot0");
-	sc_trace(wf, h0, "human0");
-	sc_trace(wf, h1, "human1");
+	// sc_trace(wf, h0, "human0");
+	// sc_trace(wf, h1, "human1");
 	sc_trace(wf, obstacle, "obstacle");
+	sc_trace(wf, velocity, "velocity");
 	sc_trace(wf, stop, "stop");
 	sc_trace(wf, direction, "direction");
+	sc_trace(wf, near_boundary, "near_boundary");
+	sc_trace(wf, robot_is_crossing, "robot_is_crossing");
 
-	s.direction = 1;
-	s.location[0] = 6.5;
-	s.location[1] = -0.83;
-	envir.setRobotLocation(0, &s);
-	//cout << "boundary" << boundary << endl;
 
-	//for(int i = 0; i <= 10*20; i++)
+
+
+	// s.direction = 1;
+	// s.location[0] = 6.5;
+	// s.location[1] = -0.83;
+	// envir.setRobotLocation(0, &s);
 
 	for(int i = 0; i <= 20*20; i++)
 
@@ -99,11 +99,6 @@ int sc_main(int, char **)
 		sensor_clock = 0;
 		sc_start(10, SC_NS);
 
-		server_clock = 1;
-		sc_start(10, SC_NS);
-		server_clock = 0;
-		sc_start(10, SC_NS);
-
 		robot_clock = 1;
 		sc_start(10, SC_NS);
 		robot_clock = 0;
@@ -112,7 +107,7 @@ int sc_main(int, char **)
 		envir.timeIncrement();
 	}
 	sc_close_vcd_trace_file(wf);
-	 system("pause");
+	system("pause");
 
 	return 0;
 }

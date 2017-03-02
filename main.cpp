@@ -11,43 +11,40 @@ environment envir;
 
 int sc_main(int, char **)
 {
-/*	struct motionData *temp, s;
-	struct motionData h0, h1;
+/*struct motionData *temp, s;
+		struct motionData h0, h1;
 	sc_signal<bool> server_clock, robot_clock, sensor_clock, human_clock;
 	sc_signal<motionData> r0;
 	sc_signal<bool> obstacle,boundary;
-*/
+ */
 //int sc_main(int, char **)
 //{
-	struct motionData *temp;
+	struct motionData *temp,s;
 	struct motionData h0, h1;
 	sc_signal<bool> server_clock, robot_clock, sensor_clock, human_clock;
 	sc_signal<motionData> r0;
-	sc_signal<bool> obstacle;
-
+	sc_signal<bool> obstacle, boundary;
+	sc_signal<float> velocity;
 	sc_signal<bool> stop;
 	sc_signal<int> serialNumber;
 	sc_signal<int> direction;
+	sc_signal<bool> robot_is_crossing;
+
 	float time;
 
 	server hq("SERVER");
-	hq.location(r0);
 	hq.obstacle(obstacle);
-	hq.clock(server_clock);
-	hq.stop(stop);
-	hq.direction(direction);
+	hq.velocity(velocity);
 
 	robot robot0("ROBOT0");
 	robot0.direction(direction);
-	robot0.stop(stop);
-	robot0.serialNumber(serialNumber);
+	robot0.robot_is_crossing(robot_is_crossing);
 	robot0.clock(robot_clock);
 	serialNumber = 0;
 
 	sensor sensor0("SENSOR0");
 	sensor0.clock(sensor_clock);
 	sensor0.obstacle(obstacle);
-
 	sensor0.boundary(boundary);
 
 
@@ -71,6 +68,9 @@ int sc_main(int, char **)
 	s.location[0] = 6.5;
 	s.location[1] = -0.83;
 	envir.setRobotLocation(0, &s);
+
+	cout << " velocity= " << velocity << ", boundary= " << boundary << endl;
+
 	//cout << "boundary" << boundary << endl;
 
 	//for(int i = 0; i <= 10*20; i++)
@@ -86,9 +86,8 @@ int sc_main(int, char **)
 		if (i%20 == 0)
 		{
 			cout << "@" << envir.getTime() << "s  Robot0:("<<temp->location[0] << ", " << temp->location[1] << ") on grid "<< envir.getGridNumber(temp) << endl;
-
 		}
-
+		
 		human_clock = 1;
 		sc_start(10, SC_NS);
 		human_clock = 0;
@@ -113,7 +112,7 @@ int sc_main(int, char **)
 	}
 	sc_close_vcd_trace_file(wf);
 	 system("pause");
-
+	
 	return 0;
 }
 

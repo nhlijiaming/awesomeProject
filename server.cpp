@@ -7,8 +7,9 @@ void server::assignment(){
 	bool obs = obstacle;
 	bool boundary = robot_is_crossing;
 	int nextGrid ;
-	int d = robot.direction,i;
+	//int d = robot.direction,i;
 	int next_grid;
+	int i;
 	bool reached=false;
 	bool stop = false;
 	bool occupied = false;
@@ -22,23 +23,23 @@ void server::assignment(){
 	}
 */
 		/*occupied detection*/
-for (i = 0; i < numberOfRobots; i++)
-{
-	if (boundary[i]){
-		nextGrid = envir.getRobotNextGridNumber(i);
-		if (nextGrid == gridnum[i]){
-			occupied = true;
-		}
-		else occupied = false;
-		}
-	if (occupied || obs || reached)
+	for (i = 0; i < numberOfRobots; i++)
 	{
-		velocity[i] = 0;
+		if (boundary){
+			nextGrid = envir.getRobotNextGridNumber(i);
+			if (nextGrid == gridnum[i]){
+				occupied = true;
+			}
+			else occupied = false;
+			}
+		if (occupied || obs || reached)
+		{
+			velocity = 0;
+		}
+		else {
+			velocity == 1;
+			envir.moveRobotToNextGrid(0);
+		}
 	}
-}
 	/*velocity control*/
-
-	
-
-
 } 

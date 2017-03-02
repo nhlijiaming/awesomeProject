@@ -14,7 +14,6 @@ SC_MODULE(sensor){
 	sc_out <bool> obstacle,boundary;
 	int (*gridMap)[9];
 
-	sc_out <bool> obstacle;
 	sc_out <bool> robot_is_crossing;
 	sc_out <int> direction;
 

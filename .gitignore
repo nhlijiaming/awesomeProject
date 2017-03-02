@@ -3,12 +3,11 @@ Debug
 *.vcxproj
 *.filters
 *.user
-<<<<<<< HEAD
-=======
 .DS*
 Makefile.*
 *.vcd
->>>>>>> origin/jeff
+*.pyc
+
 
 # Compiled Object files
 *.slo
@@ -39,3 +38,4 @@ Makefile.*
 *.exe
 *.out
 *.app
+*.x

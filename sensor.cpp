@@ -32,6 +32,8 @@ void sensor::dosens(){
 	else {
 		if (abs(r->location[0] - gridMap[b - 1][3]) < 2 * period * robsp) boundary = 1;
 	}
+
+	xcenterOfThisGrid = 0;
 }
 
 

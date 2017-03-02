@@ -44,11 +44,13 @@ private:
 	int gridMap[numberOfGrids][9];
 	struct motionData human[numberOfHumans];
 	struct motionData robot[numberOfRobots];
+	int path[numberOfRobots][40];
 	float time;
 
 public:
 	environment(void);
 	int (*getMap(void))[9];
+	int *getGrid(int gridNumber);
 	int getGridNumber(struct motionData* motionData);
 	int getNumberOfHumans(void);
 	int getNumberOfRobots(void);
@@ -60,6 +62,8 @@ public:
 	void timeIncrement();
 	void timeIncrement(float deltaTime);
 	float getTime();
+	int getRobotNextGridNumber(int robotNumber);
+	void moveRobotToNextGrid(int robotNumber);
 };
 
 #endif

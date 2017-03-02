@@ -97,6 +97,7 @@ environment::environment(void)
 	gridMap[9][8] = 0;
 
 
+<<<<<<< HEAD
 
 	/*gridMap[][0] = 1;
 	gridMap[][1] = 0;
@@ -109,6 +110,8 @@ environment::environment(void)
 	gridMap[][8] = 0;
 	*/
 
+=======
+>>>>>>> origin/jeff
 	time = 0.0;
 
 	human[0].direction = 0;
@@ -125,10 +128,26 @@ environment::environment(void)
 
 	// robot[1].location[0] = 0.5;
 	// robot[1].location[1] = -0.5;
+
+	path_pointer[0] = 1;
+	path[0][0] = 1;
+	path[0][1] = 2;
+	path[0][2] = 3;
+	path[0][3] = 4;
+	path[0][4] = 5;
+	path[0][5] = 6;
+	path[0][6] = 7;
+	path[0][7] = 8;
+	path[0][8] = 9;
 }
 
 int (*environment::getMap(void))[9]{
 	return gridMap;
+}
+
+int *environment::getGrid(int gridNumber)
+{
+	return gridMap[gridNumber];
 }
 
 int environment::getNumberOfHumans(void)
@@ -224,3 +243,18 @@ float environment::getTime()
 {
 	return time;
 }
+
+int environment::getRobotNextGridNumber(int robotNumber)
+{
+	return path[robotNumber][path_pointer[robotNumber]];
+}
+
+void environment::moveRobotToNextGrid(int robotNumber)
+{
+	path_pointer[robotNumber ++];
+}
+
+
+
+
+

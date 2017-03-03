@@ -19,6 +19,7 @@ SC_MODULE(robot){
 	SC_CTOR(robot){
 		SC_METHOD(motor);
 		sensitive << clock.pos();
+		dont_initialize();
 		SC_METHOD(comm);
 		sensitive << near_boundary.pos();
 		sensitive << near_boundary.neg();

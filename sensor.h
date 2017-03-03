@@ -19,6 +19,7 @@ SC_MODULE(sensor){
 
 	void dosens();
 	SC_CTOR(sensor){
+		direction.initialize(3);
 		SC_METHOD(dosens);
 		gridMap = envir.getMap();
 		sensitive << clock.pos();

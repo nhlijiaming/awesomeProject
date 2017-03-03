@@ -44,7 +44,7 @@ private:
 	int gridMap[numberOfGrids][9];
 	struct motionData human[numberOfHumans];
 	struct motionData robot[numberOfRobots];
-	int path[numberOfRobots][numberOfGrids];
+	int path[numberOfRobots][numberOfGrids+1];
 	int path_pointer[numberOfRobots];
 	float time;
 
@@ -65,6 +65,7 @@ public:
 	float getTime();
 	int getRobotNextGridNumber(int robotNumber);
 	void moveRobotToNextGrid(int robotNumber);
+	bool checkRobotIfArrived(int robotNumber);
 };
 
 #endif

@@ -136,16 +136,18 @@ environment::environment(void)
 	// robot[1].location[0] = 0.5;
 	// robot[1].location[1] = -0.5;
 
-	path_pointer[0] = 1;
-	path[0][0] = 1;
-	path[0][1] = 2;
-	path[0][2] = 3;
-	path[0][3] = 4;
-	path[0][4] = 5;
-	path[0][5] = 6;
-	path[0][6] = 7;
-	path[0][7] = 8;
-	path[0][8] = 9;
+	path_pointer[0] = 2;
+	path[0][0] = 10;
+	path[0][1] = 1;
+	path[0][2] = 2;
+	path[0][3] = 3;
+	path[0][4] = 4;
+	path[0][5] = 5;
+	path[0][6] = 6;
+	path[0][7] = 7;
+	path[0][8] = 8;
+	path[0][9] = 9;
+	path[0][10] = 10;
 }
 
 int (*environment::getMap(void))[9]{
@@ -262,6 +264,12 @@ void environment::moveRobotToNextGrid(int robotNumber)
 	return;
 }
 
+bool environment::checkRobotIfArrived(int robotNumber)
+{
+	if (getGridNumber(&robot[robotNumber]) == path[robotNumber][path[robotNumber][0]])
+		return true;
+	return false;
+}
 
 
 

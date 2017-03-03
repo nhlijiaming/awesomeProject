@@ -33,11 +33,9 @@ void sensor::dosens(){
 	else if (r->direction == 2) {
 		if (abs(x - gridMap[b - 1][1]) < 2 * period * robsp) robot_is_crossing = true;
 	}
-	else if (abs(x - gridMap[b - 1][3]) < 2 * period * robsp) {robot_is_crossing = true; cout << "heading east.... crossing.... " << endl;}
-	else
-	{
-		robot_is_crossing = false;
-	}
+	else if (abs(x - gridMap[b - 1][3]) < 2 * period * robsp) robot_is_crossing = true;
+		else
+			robot_is_crossing = false;
 
 
 	gridNumber = envir.getGridNumber(r);
@@ -45,20 +43,20 @@ void sensor::dosens(){
 	centerx = ((float)thisGrid[1] + (float)thisGrid[3]) / 2;
 	centery = ((float)thisGrid[2] + (float)thisGrid[4]) / 2;
 
-	cout << "at grid:" << gridNumber;
-	cout << " distance to boundary: " << abs(x - gridMap[b - 1][3]);
-	cout << "   next grid: " << envir.getRobotNextGridNumber(0) << endl;
+	// cout << "at grid:" << gridNumber;
+	// cout << " distance to boundary: " << abs(x - gridMap[b - 1][3]);
+	// cout << "   next grid: " << envir.getRobotNextGridNumber(0) << endl;
 
 	// cout << "at grid " << gridNumber << " === " << x << " " << y << " ====== ";
 	// cout << thisGrid[1] << " " << thisGrid[2] << " " << thisGrid[3] << " " << thisGrid[4] << " ";
 	// cout << thisGrid[5] << " " << thisGrid[6] << " " << thisGrid[7] << " " << thisGrid[8] << endl;
 
 
-	if ((x-centerx) * (x-centerx) + (y-centery) * (y-centery) <= 0.2)
+	if ((x-centerx) * (x-centerx) + (y-centery) * (y-centery) <= 0.01)
 	{
 		// should turn and ready to move to next objective grid
 		nextGridNumber = envir.getRobotNextGridNumber(0);
-
+		// cout << "should turn now:   " << gridNumber << " === (" << centerx << "," << centery << ") ==== (" << x << "," << y << ")" << endl;
 		// cout << thisGrid[5] << " " << thisGrid[6] << " " << thisGrid[7] << " " << thisGrid[8] << " " << nextGridNumber << endl;
 		if (thisGrid[5] == nextGridNumber) // facing west side
 			direction = 2;

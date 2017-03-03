@@ -19,23 +19,22 @@ int sc_main(int, char **)
 	sc_signal<bool> stop;
 	sc_signal<int> grid_num;
 	sc_signal<int> direction;
-	sc_signal<bool> near_boundry, near_human;
+	sc_signal<bool> near_boundary, near_human;
 	sc_signal<bool> robot_is_crossing;
 
 	float time;
 
 	server hq("SERVER");
 	hq.obstacle(near_human);
-	hq.robot_is_crossing(near_boundry);
+	hq.robot_is_crossing(robot_is_crossing);
 	hq.velocity(velocity);
 
 	robot robot0("ROBOT0");
 	robot0.direction(direction);
 	robot0.velocity(velocity);
-	robot0.near_boundry(robot_is_crossing);
-	robot0.near_human(obstacle);
-	robot0.obstacle(near_human);
-	robot0.robot_is_crossing(near_boundry);
+	robot0.near_boundary(near_boundary);
+	robot0.obstacle(obstacle);
+	robot0.robot_is_crossing(robot_is_crossing);
 	robot0.clock(robot_clock);
 
 	sensor sensor0("SENSOR0");
@@ -62,20 +61,15 @@ int sc_main(int, char **)
 	sc_trace(wf, robot_is_crossing, "robot_is_crossing");
 
 
-	s.direction = 1;
+	s.direction = 0;
 	s.location[0] = 6.5;
-	s.location[1] = -0.83;
+	s.location[1] = -1.1;
 	envir.setRobotLocation(0, &s);
 
 	cout << " velocity= " << velocity << ", boundary= " << boundary << endl;
 
 	//cout << "boundary" << boundary << endl;
 
-
-	// s.direction = 1;
-	// s.location[0] = 6.5;
-	// s.location[1] = -0.83;
-	// envir.setRobotLocation(0, &s);
 
 	for(int i = 0; i <= 20*20; i++)
 

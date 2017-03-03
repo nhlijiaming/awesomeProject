@@ -9,7 +9,6 @@ SC_MODULE(robot){
 	sc_in_clk clock;
 	sc_in<int> direction;
 	sc_in<float> velocity;
-
 	sc_in<bool> near_boundary;
 	sc_in<bool> obstacle;
 	sc_out<bool> robot_is_crossing;

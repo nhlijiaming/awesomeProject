@@ -7,11 +7,7 @@ extern environment envir;
 
 SC_MODULE(server){
 
-<<<<<<< HEAD
 	sc_in<bool> obstacle;
-=======
-	// sc_in<int> next_grid;
->>>>>>> origin/jeff
 	sc_in<bool> robot_is_crossing;
 	sc_out<float> velocity;
 	

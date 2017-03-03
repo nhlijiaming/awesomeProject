@@ -15,15 +15,11 @@ void robot::motor(){
 }
 
 void robot::comm() {
-<<<<<<< HEAD
-	robot_is_crossing = near_boundry;
-	obstacle=near_human;
-=======
-	cout << "comm..." << endl;
 	robot_is_crossing.write(near_boundary.read());
-	// grid_num = envir.getGridNumber(0);
+
 	if (near_boundary)
+		robot_is_crossing = near_boundary;
+		//cout << "robot_is_crossing: " << robot_is_crossing << " near_boundary: " << near_boundary << endl;
 		envir.moveRobotToNextGrid(0);
->>>>>>> origin/jeff
 	return;
 }

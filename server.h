@@ -6,11 +6,8 @@
 extern environment envir;
 
 SC_MODULE(server){
-
-	sc_in<bool> obstacle;
 	sc_in<bool> robot_is_crossing;
 	sc_out<float> velocity;
-	
 
 	void assignment();
 	SC_CTOR(server){

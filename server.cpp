@@ -2,16 +2,11 @@
 #include "server.h"
 
 void server::assignment(){
-
-	struct motionData robot ;
 	struct motionData *coordinate;
 	bool boundary = robot_is_crossing;
-	int nextGrid ;
+	int nextGrid;
 	//int d = robot.direction,i;
-	int next_grid;
 	int i;
-	bool reached=false;
-	bool stop = false;
 	bool occupied = false;
 	int gridnum[numberOfRobots];
 /*	if (robot.location[0] >= 6.5 && robot.location[1] == -0.5){
@@ -19,11 +14,6 @@ void server::assignment(){
 		direction = d;
 	}
 */
-	if (envir.getGridNumber(&robot) == 10)
-	{
-		reached = true;
-	}
-
 
 
 	for (i = 0; i < numberOfRobots; i++)
@@ -43,16 +33,17 @@ void server::assignment(){
 			else occupied = false;
 		}
 	}
-		if (occupied || reached )
+		if (occupied)
 		{
-			velocity = 0;
+			velocity = 0.0;
 		}
 		else {
-			velocity = 1;
+			velocity = 1.0;
 			cout << "velocity: " << velocity << endl;
 			envir.moveRobotToNextGrid(0);
 		}
 	
 	/*velocity control*/
- 	velocity = 1.0;
+ 	// velocity = 1.0;
 } 
+

@@ -9,7 +9,7 @@ environment envir;
 
 int sc_main(int, char **)
 {
-	struct motionData *temp,s;
+	struct motionData *temp;
 
 	struct motionData h0, h1;
 	sc_signal<bool> robot_clock, sensor_clock, human_clock;
@@ -19,13 +19,12 @@ int sc_main(int, char **)
 	sc_signal<bool> stop;
 	sc_signal<int> grid_num;
 	sc_signal<int> direction;
-	sc_signal<bool> near_boundary, near_human;
+	sc_signal<bool> near_boundary;
 	sc_signal<bool> robot_is_crossing;
 
 	float time;
 
 	server hq("SERVER");
-	hq.obstacle(near_human);
 	hq.robot_is_crossing(robot_is_crossing);
 	hq.velocity(velocity);
 
@@ -61,10 +60,10 @@ int sc_main(int, char **)
 	sc_trace(wf, robot_is_crossing, "robot_is_crossing");
 
 
-	s.direction = 0;
-	s.location[0] = 6.5;
-	s.location[1] = -1.1;
-	envir.setRobotLocation(0, &s);
+	// s.direction = 0;
+	// s.location[0] = 6.5;
+	// s.location[1] = -1.1;
+	// envir.setRobotLocation(0, &s);
 
 
 	//cout << "boundary" << boundary << endl;

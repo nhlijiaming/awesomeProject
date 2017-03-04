@@ -18,11 +18,10 @@ void server::assignment(){
 		d = 1;
 		direction = d;
 	}
-	*/
+*/
 	if (envir.getGridNumber(&robot) == 10)
 	{
 		reached = true;
-
 	}
 
 
@@ -37,16 +36,11 @@ void server::assignment(){
 	for (i = 0; i < numberOfRobots; i++)
 	{
 		if (boundary){
-			cout << "boundary: " << boundary << endl;
 			nextGrid = envir.getRobotNextGridNumber(i);
-
-			cout << "nextGrid: " << nextGrid << endl;
 			if (nextGrid == gridnum[i]){
 				occupied = true;
 			}
 			else occupied = false;
-
-			cout << "occupied: " << occupied << endl;
 		}
 	}
 		if (occupied || reached )
@@ -55,13 +49,10 @@ void server::assignment(){
 		}
 		else {
 			velocity = 1;
-
 			cout << "velocity: " << velocity << endl;
 			envir.moveRobotToNextGrid(0);
 		}
 	
 	/*velocity control*/
- 
-
-	velocity = 1.0;
+ 	velocity = 1.0;
 } 

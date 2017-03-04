@@ -66,7 +66,6 @@ int sc_main(int, char **)
 	s.location[1] = -1.1;
 	envir.setRobotLocation(0, &s);
 
-	cout << " velocity= " << velocity << ", boundary= " << boundary << endl;
 
 	//cout << "boundary" << boundary << endl;
 

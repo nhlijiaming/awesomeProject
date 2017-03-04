@@ -43,13 +43,6 @@ void sensor::dosens(){
 	centerx = ((float)thisGrid[1] + (float)thisGrid[3]) / 2;
 	centery = ((float)thisGrid[2] + (float)thisGrid[4]) / 2;
 
-	// cout << "at grid:" << gridNumber;
-	// cout << " distance to boundary: " << abs(x - gridMap[b - 1][3]);
-	// cout << "   next grid: " << envir.getRobotNextGridNumber(0) << endl;
-
-	// cout << "at grid " << gridNumber << " === " << x << " " << y << " ====== ";
-	// cout << thisGrid[1] << " " << thisGrid[2] << " " << thisGrid[3] << " " << thisGrid[4] << " ";
-	// cout << thisGrid[5] << " " << thisGrid[6] << " " << thisGrid[7] << " " << thisGrid[8] << endl;
 
 
 	if ((x-centerx) * (x-centerx) + (y-centery) * (y-centery) <= 0.01)

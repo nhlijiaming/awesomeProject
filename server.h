@@ -7,10 +7,10 @@ extern environment envir;
 
 SC_MODULE(server){
 
-	// sc_in<int> next_grid;
+	sc_in<bool> obstacle;
 	sc_in<bool> robot_is_crossing;
 	sc_out<float> velocity;
-	int gridnum[numberOfRobots];
+	
 
 	void assignment();
 	SC_CTOR(server){

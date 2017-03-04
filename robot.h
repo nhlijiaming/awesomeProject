@@ -12,7 +12,6 @@ SC_MODULE(robot){
 	sc_in<bool> near_boundary;
 	sc_in<bool> obstacle;
 	sc_out<bool> robot_is_crossing;
-	// sc_out<int> grid_num;
 
 	void motor();
 	void comm();

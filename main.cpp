@@ -9,38 +9,33 @@ environment envir;
 
 int sc_main(int, char **)
 {
-// 	int *temp;
-// 	temp = envir.getGrid(1);
-// 	cout << temp[0] << " " << temp[1] << " " << temp[2] << " " << temp[3] << " " << temp[4] << " ";
-// 	cout << temp[5] << " " << temp[6] << " " << temp[7] << " " << temp[8] << endl;
-// 	return 0;
+	struct motionData *temp,s;
 
-
-	struct motionData *temp;
 	struct motionData h0, h1;
 	sc_signal<bool> robot_clock, sensor_clock, human_clock;
 	sc_signal<motionData> r0;
-	sc_signal<bool> obstacle;
-	sc_signal<bool> stop;
-	sc_signal<int> direction;
-	sc_signal<bool> near_boundary, robot_is_crossing;
+	sc_signal<bool> obstacle, boundary;
 	sc_signal<float> velocity;
+	sc_signal<bool> stop;
 	sc_signal<int> grid_num;
+	sc_signal<int> direction;
+	sc_signal<bool> near_boundary, near_human;
+	sc_signal<bool> robot_is_crossing;
+
 	float time;
 
 	server hq("SERVER");
+	hq.obstacle(near_human);
 	hq.robot_is_crossing(robot_is_crossing);
 	hq.velocity(velocity);
-	// hq.next_grid(grid_num);
 
 	robot robot0("ROBOT0");
-	robot0.clock(robot_clock);
 	robot0.direction(direction);
-	robot0.near_boundary(near_boundary);
-	robot0.robot_is_crossing(robot_is_crossing);
-	robot0.obstacle(obstacle);
 	robot0.velocity(velocity);
-	// robot0.grid_num(grid_num);
+	robot0.near_boundary(near_boundary);
+	robot0.obstacle(obstacle);
+	robot0.robot_is_crossing(robot_is_crossing);
+	robot0.clock(robot_clock);
 
 	sensor sensor0("SENSOR0");
 	sensor0.clock(sensor_clock);
@@ -55,8 +50,6 @@ int sc_main(int, char **)
 	sc_trace_file *wf = sc_create_vcd_trace_file("wave");
 	sc_trace(wf, time, "time");
 	sc_trace(wf, robot_clock, "robot_clock");
-	sc_trace(wf, sensor_clock, "sensor_clock");
-	sc_trace(wf, human_clock, "human_clock");
 	sc_trace(wf, r0, "robot0");
 	// sc_trace(wf, h0, "human0");
 	// sc_trace(wf, h1, "human1");
@@ -68,12 +61,15 @@ int sc_main(int, char **)
 	sc_trace(wf, robot_is_crossing, "robot_is_crossing");
 
 
+	s.direction = 0;
+	s.location[0] = 6.5;
+	s.location[1] = -1.1;
+	envir.setRobotLocation(0, &s);
 
+	cout << " velocity= " << velocity << ", boundary= " << boundary << endl;
 
-	// s.direction = 1;
-	// s.location[0] = 6.5;
-	// s.location[1] = -0.83;
-	// envir.setRobotLocation(0, &s);
+	//cout << "boundary" << boundary << endl;
+
 
 	for(int i = 0; i <= 20*20; i++)
 
@@ -86,9 +82,8 @@ int sc_main(int, char **)
 		if (i%20 == 0)
 		{
 			cout << "@" << envir.getTime() << "s  Robot0:("<<temp->location[0] << ", " << temp->location[1] << ") on grid "<< envir.getGridNumber(temp) << endl;
-
 		}
-
+		
 		human_clock = 1;
 		sc_start(10, SC_NS);
 		human_clock = 0;
@@ -108,7 +103,6 @@ int sc_main(int, char **)
 	}
 	sc_close_vcd_trace_file(wf);
 	system("pause");
-
 	return 0;
 }
 

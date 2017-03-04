@@ -20,8 +20,9 @@ void robot::motor(){
 
 void robot::comm() {
 	robot_is_crossing.write(near_boundary.read());
-	// grid_num = envir.getGridNumber(0);
+
 	if (near_boundary)
+		robot_is_crossing = near_boundary;
 		envir.moveRobotToNextGrid(0);
 	return;
 }

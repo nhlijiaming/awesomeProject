@@ -70,7 +70,7 @@ int sc_main(int, char **)
 	//cout << "boundary" << boundary << endl;
 
 
-	for(int i = 0; i <= 10*20; i++)
+	for(int i = 0; i <= 12*20; i++)
 
 	{
 		time = envir.getTime();

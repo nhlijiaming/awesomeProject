@@ -264,8 +264,9 @@ int environment::getRobotNextGridNumber(int robotNumber)
 
 void environment::moveRobotToNextGrid(int robotNumber)
 {
-	path_pointer[robotNumber] ++;
-	cout << "@time " << time << " path= " << path_pointer[robotNumber] <<endl;
+	if (path_pointer[robotNumber] < numberOfGrids)
+		path_pointer[robotNumber] ++;
+	// cout << "@time " << time << " path= " << path_pointer[robotNumber] <<endl;
 	return;
 }
 

@@ -133,26 +133,26 @@ environment::environment(void)
 	robot[0].location[0] = 0.5;
 	robot[0].location[1] = -0.5;
 
-<<<<<<< HEAD
-=======
-	// robot[1].direction = 3;
-	// robot[1].location[0] = 5.5;
-	// robot[1].location[1] = -0.5;
 
->>>>>>> origin/jeff
+	robot[1].direction = 3;
+	robot[1].location[0] = 5.5;
+	robot[1].location[1] = -0.5;
+
 	// robot[1].location[0] = 0.5;
 	// robot[1].location[1] = -0.5;
 
-	path_pointer[0] = 1;
-	path[0][0] = 1;
-	path[0][1] = 2;
-	path[0][2] = 3;
-	path[0][3] = 4;
-	path[0][4] = 5;
-	path[0][5] = 6;
-	path[0][6] = 7;
-	path[0][7] = 8;
-	path[0][8] = 9;
+	path_pointer[0] = 2;
+	path[0][0] = 10;
+	path[0][1] = 1;
+	path[0][2] = 2;
+	path[0][3] = 3;
+	path[0][4] = 4;
+	path[0][5] = 5;
+	path[0][6] = 6;
+	path[0][7] = 7;
+	path[0][8] = 8;
+	path[0][9] = 9;
+	path[0][10] = 10;
 }
 
 int (*environment::getMap(void))[9]{
@@ -231,12 +231,7 @@ int environment::getGridNumber(struct motionData* coordinate)
 	x = coordinate->location[0];
 	y = coordinate->location[1];
 	for (i = 0; i < 10; i++){
-		if (y >= gridMap[0][4]){
-			if (x>=gridMap[i][1] && x<gridMap[i][3]) return gridMap[i][0];
-		}
-		else if (y<gridMap[0][4] && x >= gridMap[6][1] && x <= gridMap[6][3]){
-			if (y<gridMap[i][2] && y>=gridMap[i][4]) return gridMap[i][0];
-		}
+		if (y <= gridMap[i][2] && y > gridMap[i][4] && x >= gridMap[i][1] && x < gridMap[i][3]) return gridMap[i][0];
 	}
 	return 0;
 }
@@ -270,6 +265,12 @@ void environment::moveRobotToNextGrid(int robotNumber)
 	return;
 }
 
+bool environment::checkRobotIfArrived(int robotNumber)
+{
+	if (getGridNumber(&robot[robotNumber]) == path[robotNumber][path[robotNumber][0]])
+		return true;
+	return false;
+}
 
 
 

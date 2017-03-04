@@ -58,6 +58,7 @@ int sc_main(int, char **)
 	sc_trace(wf, direction, "direction");
 	sc_trace(wf, near_boundary, "near_boundary");
 	sc_trace(wf, robot_is_crossing, "robot_is_crossing");
+	sc_trace(wf, envir.path_pointer[0], "path");
 
 
 	// s.direction = 0;
@@ -69,7 +70,7 @@ int sc_main(int, char **)
 	//cout << "boundary" << boundary << endl;
 
 
-	for(int i = 0; i <= 20*20; i++)
+	for(int i = 0; i <= 10*20; i++)
 
 	{
 		time = envir.getTime();

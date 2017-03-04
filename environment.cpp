@@ -133,9 +133,9 @@ environment::environment(void)
 	robot[0].location[0] = 0.5;
 	robot[0].location[1] = -0.5;
 
-	robot[1].direction = 3;
-	robot[1].location[0] = 5.5;
-	robot[1].location[1] = -0.5;
+	// robot[1].direction = 3;
+	// robot[1].location[0] = 5.5;
+	// robot[1].location[1] = -0.5;
 
 	// robot[1].location[0] = 0.5;
 	// robot[1].location[1] = -0.5;
@@ -265,6 +265,7 @@ int environment::getRobotNextGridNumber(int robotNumber)
 void environment::moveRobotToNextGrid(int robotNumber)
 {
 	path_pointer[robotNumber] ++;
+	cout << "@time " << time << " path= " << path_pointer[robotNumber] <<endl;
 	return;
 }
 

@@ -40,7 +40,7 @@ struct motionData
 
 class environment
 {
-private:
+public:
 	int gridMap[numberOfGrids][9];
 	struct motionData human[numberOfHumans];
 	struct motionData robot[numberOfRobots];

@@ -21,8 +21,7 @@ void robot::motor(){
 void robot::comm() {
 	robot_is_crossing.write(near_boundary.read());
 
-	if (near_boundary)
-		robot_is_crossing = near_boundary;
+	if (!near_boundary)
 		envir.moveRobotToNextGrid(0);
 	return;
 }

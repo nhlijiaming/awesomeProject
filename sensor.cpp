@@ -23,17 +23,18 @@ void sensor::dosens(){
 		if (l1 < 0.5) obstacle = 1;
 		else obstacle = 0;
 	}
-	b = envir.getGridNumber(r);
+	b = envir.getGridNumber(r) - 1;
+	// cout << "(" << x << "," << y << ")" << " distance = " << gridMap[b][3] - y << endl;
 	if (r->direction == 0) {
-		if (abs(y - gridMap[b - 1][2]) < 2 * period * robsp) robot_is_crossing = true;
+		if (((gridMap[b][2] - y) > 0) && ((gridMap[b][2] - y) < 2 * period * robsp)) robot_is_crossing = true;
 	}
 	else if (r->direction == 1) {
-		if (abs(y - gridMap[b - 1][4]) < 2 * period * robsp) robot_is_crossing = true;
+		if (((y - gridMap[b][4]) > 0) && ((y - gridMap[b][4]) < 2 * period * robsp)) robot_is_crossing = true;
 	}
 	else if (r->direction == 2) {
-		if (abs(x - gridMap[b - 1][1]) < 2 * period * robsp) robot_is_crossing = true;
+		if (((x - gridMap[b][1]) > 0) && ((x - gridMap[b][1]) < 2 * period * robsp)) robot_is_crossing = true;
 	}
-	else if (abs(x - gridMap[b - 1][3]) < 2 * period * robsp) robot_is_crossing = true;
+	else if (((gridMap[b][3] - x) > 0) && ((gridMap[b][3] - x) < 2 * period * robsp)) robot_is_crossing = true;
 		else
 			robot_is_crossing = false;
 
@@ -49,16 +50,17 @@ void sensor::dosens(){
 	{
 		// should turn and ready to move to next objective grid
 		nextGridNumber = envir.getRobotNextGridNumber(0);
-		// cout << "should turn now:   " << gridNumber << " === (" << centerx << "," << centery << ") ==== (" << x << "," << y << ")" << endl;
-		// cout << thisGrid[5] << " " << thisGrid[6] << " " << thisGrid[7] << " " << thisGrid[8] << " " << nextGridNumber << endl;
+		cout << "should turn now:   " << gridNumber << " === (" << centerx << "," << centery << ") ==== (" << x << "," << y << ")" << endl;
+		cout << thisGrid[5] << " " << thisGrid[6] << " " << thisGrid[7] << " " << thisGrid[8] << " " << nextGridNumber << endl;
 		if (thisGrid[5] == nextGridNumber) // facing west side
 			direction = 2;
-		if (thisGrid[6] == nextGridNumber) // facing east side
+		else if (thisGrid[6] == nextGridNumber) // facing east side
 			direction = 3;
-		if (thisGrid[7] == nextGridNumber) // facing north side
+		else if (thisGrid[7] == nextGridNumber) // facing north side
 			direction = 0;
-		if (thisGrid[8] == nextGridNumber) // facing south side
+		else if (thisGrid[8] == nextGridNumber) // facing south side
 			direction = 1;
+		else cout << "**************************   ERR: no such neighbor.  ***************************" << endl;
 	}
 
 }

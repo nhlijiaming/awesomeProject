@@ -13,7 +13,7 @@ SC_MODULE(server){
 	SC_CTOR(server){
 		velocity.initialize(1.0);
 		SC_METHOD(assignment);
-		sensitive << robot_is_crossing;
+		sensitive << robot_is_crossing.pos();
 
 		dont_initialize();
 	}

@@ -40,7 +40,7 @@ void server::assignment(){
 		else {
 			velocity = 1.0;
 			cout << "velocity: " << velocity << endl;
-			envir.moveRobotToNextGrid(0);
+			// envir.moveRobotToNextGrid(0);
 		}
 	
 	/*velocity control*/

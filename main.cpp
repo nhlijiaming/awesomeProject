@@ -81,7 +81,6 @@ int sc_main(int, char **)
 		if (i%20 == 0)
 		{
 			cout << "@" << envir.getTime() << "s  Robot0:("<<temp->location[0] << ", " << temp->location[1] << ") on grid "<< envir.getGridNumber(temp) << endl;
-			cout << "distance to Grid 9: " << envir.distanceToGrid(0,9) << endl;
 		}
 		
 		human_clock = 1;

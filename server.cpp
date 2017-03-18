@@ -22,12 +22,19 @@ void server::assignment(){
 	{
 		if (boundary){
 			nextGrid = envir.getRobotNextGridNumber(i);
-			if (nextGrid == gridnum[i]){
-				occupied = true;
+			cout << "nextGrid: " << nextGrid << endl;
+
+			for (i = 0; i < numberOfRobots; i++)
+			{
+				if (nextGrid == gridnum[i]){
+					occupied = true;
+					cout << "occupied: " << occupied << endl;
+				}
+				else occupied = false;
 			}
-			else occupied = false;
 		}
 	}
+	
 	if (occupied)
 	{
 		velocity = 0.0;

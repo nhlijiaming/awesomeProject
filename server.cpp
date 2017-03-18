@@ -9,19 +9,21 @@ void server::assignment(){
 	bool occupied[numberOfRobots] = {false};
 	int gridnum[numberOfRobots];
 
+	cout << "gridnum: ";
 	for (i = 0; i < numberOfRobots; i++)
 	{
 		coordinate = envir.getRobotLocation(i);
 		gridnum[i] = envir.getGridNumber(coordinate);
-		cout << "gridnum: " << gridnum[i] << endl;
+		cout << gridnum[i] << " ";
 	}
+	cout << endl;
 
 	/*occupied detection*/
 	for (i = 0; i < numberOfRobots; i++)
 	{
 		if (robot_is_crossing[i]){
 			nextGrid = envir.getRobotNextGridNumber(i);
-			cout << "nextGrid: " << nextGrid << endl;
+			cout << "Robot " << i << " is crossing. Next Grid: " << nextGrid << endl;
 
 			for (j = 0; j < numberOfRobots; j++)
 			{
@@ -34,6 +36,7 @@ void server::assignment(){
 		}
 	}
 	
+	cout << "velocity: ";
 	for (i = 0; i < numberOfRobots; i++)
 	{
 		if (occupied[i])
@@ -42,9 +45,10 @@ void server::assignment(){
 		}
 		else {
 			velocity[i] = 1.0;
-			cout << "velocity: " << velocity[i] << endl;
+			cout << velocity[i] << " ";
 		}
 	}
+	cout << endl;
 	
 	/*velocity control*/
  	// for

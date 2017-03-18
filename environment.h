@@ -10,7 +10,7 @@
 
 struct motionData
 {
-	int direction;
+	int direction; // 0 for go up, 1 for down, 2 for left and 3 for right
 	float location[2];
 
 	inline bool operator == (const motionData& rhs) const{
@@ -42,6 +42,7 @@ class environment
 {
 public:
 	int gridMap[numberOfGrids][9];
+	bool meetingpoint[numberOfGrids];
 	struct motionData human[numberOfHumans];
 	struct motionData robot[numberOfRobots];
 	int path[numberOfRobots][numberOfGrids+1];
@@ -66,6 +67,8 @@ public:
 	int getRobotNextGridNumber(int robotNumber);
 	void moveRobotToNextGrid(int robotNumber);
 	bool checkRobotIfArrived(int robotNumber);
+	float distanceToGrid(int robotNumber,int targetGridNumber);
+	bool isMeetingPoint(int gridNumber);
 };
 
 #endif

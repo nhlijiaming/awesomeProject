@@ -15,95 +15,95 @@ environment::environment(void)
 	// gridMap[][7] grid number of the above
 	// gridMap[][8] grid number of the below
 
-	gridMap[0][0] = 1;
+	gridMap[0][0] = 0;
 	gridMap[0][1] = 0;
 	gridMap[0][2] = 0;
 	gridMap[0][3] = 1;
 	gridMap[0][4] = -1;
 	gridMap[0][5] = 0;
-	gridMap[0][6] = 2;
+	gridMap[0][6] = 1;
 	gridMap[0][7] = 0;
 	gridMap[0][8] = 0;
-	gridMap[1][0] = 2;
+	gridMap[1][0] = 1;
 	gridMap[1][1] = 1;
 	gridMap[1][2] = 0;
 	gridMap[1][3] = 2;
 	gridMap[1][4] = -1;
-	gridMap[1][5] = 1;
-	gridMap[1][6] = 3;
+	gridMap[1][5] = 0;
+	gridMap[1][6] = 2;
 	gridMap[1][7] = 0;
 	gridMap[1][8] = 0;
-	gridMap[2][0] = 3;
+	gridMap[2][0] = 2;
 	gridMap[2][1] = 2;
 	gridMap[2][2] = 0;
 	gridMap[2][3] = 3;
 	gridMap[2][4] = -1;
-	gridMap[2][5] = 2;
-	gridMap[2][6] = 4;
+	gridMap[2][5] = 1;
+	gridMap[2][6] = 3;
 	gridMap[2][7] = 0;
 	gridMap[2][8] = 0;
-	gridMap[3][0] = 4;
+	gridMap[3][0] = 3;
 	gridMap[3][1] = 3;
 	gridMap[3][2] = 0;
 	gridMap[3][3] = 4;
 	gridMap[3][4] = -1;
-	gridMap[3][5] = 3;
-	gridMap[3][6] = 5;
+	gridMap[3][5] = 2;
+	gridMap[3][6] = 4;
 	gridMap[3][7] = 0;
 	gridMap[3][8] = 0;
-	gridMap[4][0] = 5;
+	gridMap[4][0] = 4;
 	gridMap[4][1] = 4;
 	gridMap[4][2] = 0;
 	gridMap[4][3] = 5;
 	gridMap[4][4] = -1;
-	gridMap[4][5] = 4;
-	gridMap[4][6] = 6;
+	gridMap[4][5] = 3;
+	gridMap[4][6] = 5;
 	gridMap[4][7] = 0;
 	gridMap[4][8] = 0;
-	gridMap[5][0] = 6;
+	gridMap[5][0] = 5;
 	gridMap[5][1] = 5;
 	gridMap[5][2] = 0;
 	gridMap[5][3] = 6;
 	gridMap[5][4] = -1;
-	gridMap[5][5] = 5;
-	gridMap[5][6] = 7;
+	gridMap[5][5] = 4;
+	gridMap[5][6] = 6;
 	gridMap[5][7] = 0;
 	gridMap[5][8] = 0;
-	gridMap[6][0] = 7;
+	gridMap[6][0] = 6;
 	gridMap[6][1] = 6;
 	gridMap[6][2] = 0;
 	gridMap[6][3] = 7;
 	gridMap[6][4] = -1;
-	gridMap[6][5] = 6;
+	gridMap[6][5] = 5;
 	gridMap[6][6] = 0;
 	gridMap[6][7] = 0;
-	gridMap[6][8] = 8;
-	gridMap[7][0] = 8;
+	gridMap[6][8] = 7;
+	gridMap[7][0] = 7;
 	gridMap[7][1] = 6;
 	gridMap[7][2] = -1;
 	gridMap[7][3] = 7;
 	gridMap[7][4] = -2;
 	gridMap[7][5] = 0;
 	gridMap[7][6] = 0;
-	gridMap[7][7] = 7;
-	gridMap[7][8] = 9;
-	gridMap[8][0] = 9;
+	gridMap[7][7] = 6;
+	gridMap[7][8] = 8;
+	gridMap[8][0] = 8;
 	gridMap[8][1] = 6;
 	gridMap[8][2] = -2;
 	gridMap[8][3] = 7;
 	gridMap[8][4] = -3;
 	gridMap[8][5] = 0;
 	gridMap[8][6] = 0;
-	gridMap[8][7] = 8;
-	gridMap[8][8] = 10;
-	gridMap[9][0] = 10;
-	gridMap[9][1] = 6;
+	gridMap[8][7] = 7;
+	gridMap[8][8] = 9;
+	gridMap[9][0] = 9;
+	gridMap[9][1] = 9;
 	gridMap[9][2] = -3;
 	gridMap[9][3] = 7;
 	gridMap[9][4] = -4;
 	gridMap[9][5] = 0;
 	gridMap[9][6] = 0;
-	gridMap[9][7] = 9;
+	gridMap[9][7] = 8;
 	gridMap[9][8] = 0;
 
 
@@ -142,16 +142,16 @@ environment::environment(void)
 
 	path_pointer[0] = 2;
 	path[0][0] = 10;
-	path[0][1] = 1;
-	path[0][2] = 2;
-	path[0][3] = 3;
-	path[0][4] = 4;
-	path[0][5] = 5;
-	path[0][6] = 6;
-	path[0][7] = 7;
-	path[0][8] = 8;
-	path[0][9] = 9;
-	path[0][10] = 10;
+	path[0][1] = 0;
+	path[0][2] = 1;
+	path[0][3] = 2;
+	path[0][4] = 3;
+	path[0][5] = 4;
+	path[0][6] = 5;
+	path[0][7] = 6;
+	path[0][8] = 7;
+	path[0][9] = 8;
+	path[0][10] = 9;
 }
 
 int (*environment::getMap(void))[9]{
@@ -277,6 +277,115 @@ bool environment::checkRobotIfArrived(int robotNumber)
 	return false;
 }
 
+float environment::distanceToGrid(int robotNumber,int targetGridNumber)
+{
+	float distance;
+	struct motionData *r;
+	int gridNumber, nextGridNumber, *thisGrid;
+	int direction, currentDirection;
+	int pointer, n;
+	float centerx, centery;
+	// cout <<"==============" << endl;
+
+	r = getRobotLocation(robotNumber);
+	gridNumber = getGridNumber(r);
+	if (gridNumber == targetGridNumber)
+		return 0.0;
+
+	n = 0;
+	for(int i = 1; i <= path[robotNumber][0] ; i ++)
+		if (path[robotNumber][i] == targetGridNumber)
+		{
+			n = i;
+			break;
+		}
+	if (n < path_pointer[0])
+		return 9999999;	//has passed or will never arrive the targer grid
+
+
+	pointer = path_pointer[robotNumber];
+	nextGridNumber = path[robotNumber][pointer];
+
+	thisGrid = getGrid(gridNumber);
+	centerx = ((float)thisGrid[1] + (float)thisGrid[3]) / 2;
+	centery = ((float)thisGrid[2] + (float)thisGrid[4]) / 2;
+	direction = 0;
+	if (thisGrid[5] == nextGridNumber) // facing west side
+		direction = 2;
+	else if (thisGrid[6] == nextGridNumber) // facing east side
+		direction = 3;
+	else if (thisGrid[7] == nextGridNumber) // facing north side
+		direction = 0;
+	else if (thisGrid[8] == nextGridNumber) // facing south side
+		direction = 1;
+	else cout << "**************************   ERR @ environment::distanceToGrid : grid " << gridNumber << " has no neighbor "<< nextGridNumber <<".  ***************************" << endl;
+
+	distance = 0.0;
+	currentDirection = r->direction;
+	if (direction == currentDirection)
+	{
+		if (direction == 0) // going up
+			distance += thisGrid[2] - r->location[1];
+		else if (direction == 1) // going down
+			distance += r->location[1] - thisGrid[4];
+		else if (direction == 2) // going left
+			distance += r->location[0] - thisGrid[1];
+		else if (direction == 3) // going right
+			distance += thisGrid[3] - r->location[0];
+	}
+	else
+	{
+		distance += sqrt((r->location[0] - centerx) * (r->location[0] - centerx) + (r->location[1] - centery) * (r->location[1] - centery));
+		if (direction == 0) // going up
+			distance += 0.5 * (thisGrid[2] - r->location[1]);
+		else if (direction == 1) // going down
+			distance += 0.5 * (r->location[1] - thisGrid[4]);
+		else if (direction == 2) // going left
+			distance += 0.5 * (r->location[0] - thisGrid[1]);
+		else if (direction == 3) // going right
+			distance += 0.5 * (thisGrid[3] - r->location[0]);
+	}
+	currentDirection = direction;
+
+	while (nextGridNumber != targetGridNumber)
+	{
+		gridNumber = nextGridNumber;
+		pointer ++;
+		nextGridNumber = path[robotNumber][pointer];
+		thisGrid = getGrid(gridNumber);
+
+		// cout << "at grid "<<gridNumber << " -- "<< distance << endl;
+		if (thisGrid[5] == nextGridNumber) // facing west side
+			direction = 2;
+		else if (thisGrid[6] == nextGridNumber) // facing east side
+			direction = 3;
+		else if (thisGrid[7] == nextGridNumber) // facing north side
+			direction = 0;
+		else if (thisGrid[8] == nextGridNumber) // facing south side
+			direction = 1;
+		else cout << "**************************   ERR @ environment::distanceToGrid : grid " << gridNumber << " has no neighbor "<< nextGridNumber <<".  ***************************" << endl;
+
+		if (direction == currentDirection)
+		{
+			if (direction == 0 || direction == 1) // going up or down
+				distance += thisGrid[2] - thisGrid[4];
+			else if (direction == 2 || direction == 3) // going left or right
+				distance += thisGrid[3] - thisGrid[1];
+		}
+		else
+		{
+			distance += 0.5 * (thisGrid[2] - thisGrid[4] + thisGrid[3] - thisGrid[1]);
+		}
+		currentDirection = direction;
+	}
+	// cout << "==============" << endl;
+	return distance;
+}
+
+bool environment::isMeetingPoint(int gridNumber)
+{
+	return meetingpoint[gridNumber];
+}
 
 
 

@@ -50,8 +50,8 @@ int sc_main(int, char **)
 	sc_trace(wf, time, "time");
 	sc_trace(wf, robot_clock, "robot_clock");
 	sc_trace(wf, r0, "robot0");
-	// sc_trace(wf, h0, "human0");
-	// sc_trace(wf, h1, "human1");
+	sc_trace(wf, h0, "human0");
+	sc_trace(wf, h1, "human1");
 	sc_trace(wf, obstacle, "obstacle");
 	sc_trace(wf, velocity, "velocity");
 	sc_trace(wf, stop, "stop");
@@ -81,6 +81,7 @@ int sc_main(int, char **)
 		if (i%20 == 0)
 		{
 			cout << "@" << envir.getTime() << "s  Robot0:("<<temp->location[0] << ", " << temp->location[1] << ") on grid "<< envir.getGridNumber(temp) << endl;
+			cout << "distance to Grid 9: " << envir.distanceToGrid(0,9) << endl;
 		}
 		
 		human_clock = 1;

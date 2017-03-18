@@ -9,12 +9,6 @@ void server::assignment(){
 	int i;
 	bool occupied = false;
 	int gridnum[numberOfRobots];
-/*	if (robot.location[0] >= 6.5 && robot.location[1] == -0.5){
-		d = 1;
-		direction = d;
-	}
-*/
-
 
 	for (i = 0; i < numberOfRobots; i++)
 	{
@@ -22,7 +16,8 @@ void server::assignment(){
 		gridnum[i] = envir.getGridNumber(coordinate);
 		cout << "gridnum: " << gridnum[i] << endl;
 	}
-		/*occupied detection*/
+
+	/*occupied detection*/
 	for (i = 0; i < numberOfRobots; i++)
 	{
 		if (boundary){
@@ -33,17 +28,16 @@ void server::assignment(){
 			else occupied = false;
 		}
 	}
-		if (occupied)
-		{
-			velocity = 0.0;
-		}
-		else {
-			velocity = 1.0;
-			cout << "velocity: " << velocity << endl;
-			// envir.moveRobotToNextGrid(0);
-		}
+	if (occupied)
+	{
+		velocity = 0.0;
+	}
+	else {
+		velocity = 1.0;
+		cout << "velocity: " << velocity << endl;
+	}
 	
 	/*velocity control*/
- 	// velocity = 1.0;
+ 	// for
 } 
 

@@ -23,7 +23,7 @@ void sensor::dosens(){
 		if (l1 < 0.5) obstacle = 1;
 		else obstacle = 0;
 	}
-	b = envir.getGridNumber(r) - 1;
+	b = envir.getGridNumber(r);
 	// cout << "(" << x << "," << y << ")" << " distance = " << y - gridMap[b][4] << endl;
 	robot_is_crossing = false;
 	if (r->direction == 0) {
@@ -41,13 +41,13 @@ void sensor::dosens(){
 
 
 	gridNumber = envir.getGridNumber(r);
-	thisGrid = envir.getGrid(gridNumber-1);
+	thisGrid = envir.getGrid(gridNumber);
 	centerx = ((float)thisGrid[1] + (float)thisGrid[3]) / 2;
 	centery = ((float)thisGrid[2] + (float)thisGrid[4]) / 2;
 
 
 
-	if ((x-centerx) * (x-centerx) + (y-centery) * (y-centery) <= 0.01)
+	if ((x-centerx) * (x-centerx) + (y-centery) * (y-centery) <= 0.002)
 	{
 		// should turn and ready to move to next objective grid
 		nextGridNumber = envir.getRobotNextGridNumber(0);
@@ -61,7 +61,7 @@ void sensor::dosens(){
 			direction = 0;
 		else if (thisGrid[8] == nextGridNumber) // facing south side
 			direction = 1;
-		else cout << "**************************   ERR: no such neighbor.  ***************************" << endl;
+		else cout << "**************************   ERR: grid " << gridNumber << " has no neighbor "<< nextGridNumber <<".  ***************************" << endl;
 	}
 
 }

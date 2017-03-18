@@ -2,30 +2,28 @@
 #define __HUMAN_H
 #include "systemc.h"
 
-/*
-Functions:
-1.
-2.
-3.
-4.
-*/
-
 SC_MODULE(human){
 	sc_in <bool> clock;
 
-	float x_human0, y_human0, x_human1, y_human1; //human1,2's location
-	bool n, m;//for human lacation calculation
-	float humsp0, humsp1;
+	float x_human0, y_human0, x_human1, y_human1, x_human2, y_human2, x_human3, y_human3; //human1,2's location
+	bool n, m;//for human location calculation
+	float humsp0, humsp1, humsp2, humsp3;
 
 
 	void assignment();
 	SC_CTOR(human){
-		x_human0=6.5;
-		y_human0 = -0.5;
-		x_human1=6.5;
-		y_human1=-3.5;
+		x_human0= 4 ;
+		y_human0 = 3;
+		x_human1 = 66;
+		y_human1 = 3;
+		x_human2 = 66;
+		y_human2 = 36;
+		x_human3 = 4;
+		y_human3 = 49;
 		humsp0 = 0.5;
 		humsp1 = 1.5;
+		humsp2 = 1;
+		humsp3 = 2;
 		n = 0;
 		m = 0;
 		SC_METHOD(assignment);

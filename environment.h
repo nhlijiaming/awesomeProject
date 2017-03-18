@@ -67,7 +67,7 @@ public:
 	int getRobotNextGridNumber(int robotNumber);
 	void moveRobotToNextGrid(int robotNumber);
 	bool checkRobotIfArrived(int robotNumber);
-	float distanceToGrid(int robotNumber,int targetGridNumber);
+	float distanceToGrid(int robotNumber, int targetGridNumber);
 	bool isMeetingPoint(int gridNumber);
 };
 

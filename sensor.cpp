@@ -51,8 +51,8 @@ void sensor::dosens(){
 	{
 		// should turn and ready to move to next objective grid
 		nextGridNumber = envir.getRobotNextGridNumber(0);
-		cout << "should turn now:   " << gridNumber << " === (" << centerx << "," << centery << ") ==== (" << x << "," << y << ")" << endl;
-		cout << thisGrid[5] << " " << thisGrid[6] << " " << thisGrid[7] << " " << thisGrid[8] << " " << nextGridNumber << endl;
+		//cout << "should turn now:   " << gridNumber << " === (" << centerx << "," << centery << ") ==== (" << x << "," << y << ")" << endl;
+		//cout << thisGrid[5] << " " << thisGrid[6] << " " << thisGrid[7] << " " << thisGrid[8] << " " << nextGridNumber << endl;
 		if (thisGrid[5] == nextGridNumber) // facing west side
 			direction = 2;
 		else if (thisGrid[6] == nextGridNumber) // facing east side

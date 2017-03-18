@@ -51,6 +51,5 @@ void server::assignment(){
 		}
 	
 	/*velocity control*/
- 	// velocity = 1.0;
 } 
 

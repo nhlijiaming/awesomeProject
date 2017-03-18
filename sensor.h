@@ -11,14 +11,16 @@ extern environment envir;
 
 SC_MODULE(sensor){
 	sc_in<bool> clock;
-	sc_out<bool> obstacle;
-	sc_out<bool> robot_is_crossing;
-	sc_out<int> direction;
+	sc_out<bool> obstacle[numberOfRobots];
+	sc_out<bool> robot_is_crossing[numberOfRobots];
+	sc_out<int> direction[numberOfRobots];
 	int (*gridMap)[9];
 
 	void dosens();
 	SC_CTOR(sensor){
-		direction.initialize(3);
+		direction[0].initialize(3);
+		direction[1].initialize(2);
+
 		SC_METHOD(dosens);
 		gridMap = envir.getMap();
 		sensitive << clock.pos();

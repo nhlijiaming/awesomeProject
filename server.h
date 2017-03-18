@@ -6,14 +6,16 @@
 extern environment envir;
 
 SC_MODULE(server){
-	sc_in<bool> robot_is_crossing;
-	sc_out<float> velocity;
+	sc_in<bool> robot_is_crossing[numberOfRobots];
+	sc_out<float> velocity[numberOfRobots];
 
 	void assignment();
 	SC_CTOR(server){
-		velocity.initialize(1.0);
+		velocity[0].initialize(1.0);
+		velocity[1].initialize(1.0);
 		SC_METHOD(assignment);
-		sensitive << robot_is_crossing.pos();
+		sensitive << robot_is_crossing[0].pos();
+		sensitive << robot_is_crossing[1].pos();
 
 		dont_initialize();
 	}

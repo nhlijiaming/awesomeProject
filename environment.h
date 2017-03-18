@@ -2,7 +2,7 @@
 #define __ENVIR__H
 #include "systemc.h"
 
-#define numberOfGrids 10
+#define numberOfGrids 47
 #define numberOfRobots 2
 #define numberOfHumans 2
 

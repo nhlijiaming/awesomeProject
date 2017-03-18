@@ -3,11 +3,10 @@
 
 void server::assignment(){
 	struct motionData *coordinate;
-	bool boundary = robot_is_crossing;
 	int nextGrid;
 	//int d = robot.direction,i;
-	int i;
-	bool occupied = false;
+	int i, j;
+	bool occupied[numberOfRobots] = {false};
 	int gridnum[numberOfRobots];
 
 	for (i = 0; i < numberOfRobots; i++)
@@ -20,28 +19,31 @@ void server::assignment(){
 	/*occupied detection*/
 	for (i = 0; i < numberOfRobots; i++)
 	{
-		if (boundary){
+		if (robot_is_crossing[i]){
 			nextGrid = envir.getRobotNextGridNumber(i);
 			cout << "nextGrid: " << nextGrid << endl;
 
-			for (i = 0; i < numberOfRobots; i++)
+			for (j = 0; j < numberOfRobots; j++)
 			{
-				if (nextGrid == gridnum[i]){
-					occupied = true;
-					cout << "occupied: " << occupied << endl;
+				if (nextGrid == gridnum[j]){
+					occupied[i] = true;
+					cout << "occupied: " << occupied[i] << endl;
 				}
-				else occupied = false;
+				else occupied[i] = false;
 			}
 		}
 	}
 	
-	if (occupied)
+	for (i = 0; i < numberOfRobots; i++)
 	{
-		velocity = 0.0;
-	}
-	else {
-		velocity = 1.0;
-		cout << "velocity: " << velocity << endl;
+		if (occupied[i])
+		{
+			velocity[i] = 0.0;
+		}
+		else {
+			velocity[i] = 1.0;
+			cout << "velocity: " << velocity[i] << endl;
+		}
 	}
 	
 	/*velocity control*/

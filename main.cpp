@@ -9,38 +9,43 @@ environment envir;
 
 int sc_main(int, char **)
 {
-	struct motionData *temp;
-
-	struct motionData h0, h1;
+	struct motionData r0, r1, h0, h1;
 	sc_signal<bool> robot_clock, sensor_clock, human_clock;
-	sc_signal<motionData> r0;
-	sc_signal<bool> obstacle, boundary;
-	sc_signal<float> velocity;
-	sc_signal<bool> stop;
-	sc_signal<int> grid_num;
-	sc_signal<int> direction;
-	sc_signal<bool> near_boundary;
-	sc_signal<bool> robot_is_crossing;
+	sc_signal<bool> obstacle[numberOfRobots];
+	sc_signal<float> velocity[numberOfRobots];
+	sc_signal<int> direction[numberOfRobots];
+	sc_signal<bool> near_boundary[numberOfRobots];
+	sc_signal<bool> robot_is_crossing[numberOfRobots];
 
 	float time;
+	int i;
 
 	server hq("SERVER");
-	hq.robot_is_crossing(robot_is_crossing);
-	hq.velocity(velocity);
+	for(i = 0; i < numberOfRobots ; i ++)
+	{
+		hq.robot_is_crossing[i](robot_is_crossing[i]);
+		hq.velocity[i](velocity[i]);
+	}
 
 	robot robot0("ROBOT0");
-	robot0.direction(direction);
-	robot0.velocity(velocity);
-	robot0.near_boundary(near_boundary);
-	robot0.obstacle(obstacle);
-	robot0.robot_is_crossing(robot_is_crossing);
 	robot0.clock(robot_clock);
+	for(i = 0; i < numberOfRobots ; i ++)
+	{
+		robot0.direction[i](direction[i]);
+		robot0.velocity[i](velocity[i]);
+		robot0.near_boundary[i](near_boundary[i]);
+		robot0.obstacle[i](obstacle[i]);	
+		robot0.robot_is_crossing[i](robot_is_crossing[i]);
+	}
 
 	sensor sensor0("SENSOR0");
 	sensor0.clock(sensor_clock);
-	sensor0.obstacle(obstacle);
-	sensor0.robot_is_crossing(near_boundary);
-	sensor0.direction(direction);
+	for(i = 0; i < numberOfRobots ; i ++)
+	{
+		sensor0.obstacle[i](obstacle[i]);
+		sensor0.robot_is_crossing[i](near_boundary[i]);
+		sensor0.direction[i](direction[i]);
+	}
 
 
 	human human0("HUMAN0");
@@ -49,17 +54,20 @@ int sc_main(int, char **)
 	sc_trace_file *wf = sc_create_vcd_trace_file("wave");
 	sc_trace(wf, time, "time");
 	sc_trace(wf, robot_clock, "robot_clock");
+
 	sc_trace(wf, r0, "robot0");
+	sc_trace(wf, r1, "robot1");
 	sc_trace(wf, h0, "human0");
 	sc_trace(wf, h1, "human1");
-	sc_trace(wf, obstacle, "obstacle");
-	sc_trace(wf, velocity, "velocity");
-	sc_trace(wf, stop, "stop");
-	sc_trace(wf, direction, "direction");
-	sc_trace(wf, near_boundary, "near_boundary");
-	sc_trace(wf, robot_is_crossing, "robot_is_crossing");
-	sc_trace(wf, envir.path_pointer[0], "path");
-
+	// for(i = 0; i < numberOfRobots ; i ++)
+	// {
+	i=0;
+		sc_trace(wf, obstacle[i], "obstacle");
+		sc_trace(wf, velocity[i], "velocity");
+		sc_trace(wf, direction[i], "direction");
+		sc_trace(wf, near_boundary[i], "near_boundary");
+		sc_trace(wf, robot_is_crossing[i], "robot_is_crossing");
+	// }
 
 	// s.direction = 0;
 	// s.location[0] = 6.5;
@@ -74,13 +82,14 @@ int sc_main(int, char **)
 
 	{
 		time = envir.getTime();
-		temp = envir.getRobotLocation(0);
 		h0 = *(envir.getHumanLocation(0));
 		h1 = *(envir.getHumanLocation(1));
-		r0 = *temp;
+		r0 = *(envir.getRobotLocation(0));
+		r1 = *(envir.getRobotLocation(1));
 		if (i%20 == 0)
 		{
-			cout << "@" << envir.getTime() << "s  Robot0:("<<temp->location[0] << ", " << temp->location[1] << ") on grid "<< envir.getGridNumber(temp) << endl;
+			cout << "@" << (int)envir.getTime() << "s  Robot0:("<<r0.location[0] << ", " << r0.location[1] << ") on grid "<< envir.getGridNumber(&r0) << endl;
+			cout << "     Robot1:("<<r1.location[0] << ", " << r1.location[1] << ") on grid "<< envir.getGridNumber(&r1) << endl;
 		}
 		
 		human_clock = 1;

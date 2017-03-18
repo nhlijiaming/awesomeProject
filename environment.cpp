@@ -5,7 +5,7 @@
 environment::environment(void)
 {
 	/*Grid Map*/
-	// gridMap[][0] number, starting from 0 vcccccf  ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccce3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333hjneeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeehhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhnjdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+	// gridMap[][0] number, starting from 0
 	// gridMap[][1] x of up-left conner coordinate
 	// gridMap[][2] y of up-left conner coordinate
 	// gridMap[][3] x of down-right conner coordinate
@@ -551,28 +551,37 @@ environment::environment(void)
 	human[1].location[1] = -3.5;
 
 	robot[0].direction = 3;
-	robot[0].location[0] = 0.5;
-	robot[0].location[1] = -0.5;
+	robot[0].location[0] = 41;
+	robot[0].location[1] = 49;
 
-	robot[1].direction = 3;
-	robot[1].location[0] = 5.5;
-	robot[1].location[1] = -0.5;
+	robot[1].direction = 2;
+	robot[1].location[0] = 56;
+	robot[1].location[1] = 49;
 
 	// robot[1].location[0] = 0.5;
 	// robot[1].location[1] = -0.5;
 
 	path_pointer[0] = 2;
-	path[0][0] = 10;
-	path[0][1] = 0;
-	path[0][2] = 1;
-	path[0][3] = 2;
-	path[0][4] = 3;
-	path[0][5] = 4;
-	path[0][6] = 5;
-	path[0][7] = 6;
-	path[0][8] = 7;
-	path[0][9] = 8;
-	path[0][10] = 9;
+	path[0][0] = 9;
+	path[0][1] = 44;
+	path[0][2] = 45;
+	path[0][3] = 39;
+	path[0][4] = 34;
+	path[0][5] = 33;
+	path[0][6] = 32;
+	path[0][7] = 26;
+	path[0][8] = 20;
+	path[0][9] = 19;
+
+	path_pointer[1] = 2;
+	path[1][0] = 7;
+	path[1][1] = 46;
+	path[1][2] = 45;
+	path[1][3] = 39;
+	path[1][4] = 34;
+	path[1][5] = 35;
+	path[1][6] = 36;
+	path[1][7] = 27;
 }
 
 int (*environment::getMap(void))[9]{
@@ -650,7 +659,7 @@ int environment::getGridNumber(struct motionData* coordinate)
 	int i;
 	x = coordinate->location[0];
 	y = coordinate->location[1];
-	for (i = 0; i < 10; i++){
+	for (i = 0; i < numberOfGrids; i++){
 		if (y <= gridMap[i][2] && y > gridMap[i][4] && x >= gridMap[i][1] && x < gridMap[i][3]) return gridMap[i][0];
 	}
 	return 0;

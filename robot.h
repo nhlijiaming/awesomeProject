@@ -7,11 +7,11 @@ extern environment envir;
 
 SC_MODULE(robot){
 	sc_in_clk clock;
-	sc_in<int> direction;
-	sc_in<float> velocity;
-	sc_in<bool> near_boundary;
-	sc_in<bool> obstacle;
-	sc_out<bool> robot_is_crossing;
+	sc_in<int> direction[numberOfRobots];
+	sc_in<float> velocity[numberOfRobots];
+	sc_in<bool> near_boundary[numberOfRobots];
+	sc_in<bool> obstacle[numberOfRobots];
+	sc_out<bool> robot_is_crossing[numberOfRobots];
 
 	void motor();
 	void comm();
@@ -20,8 +20,10 @@ SC_MODULE(robot){
 		sensitive << clock.pos();
 		dont_initialize();
 		SC_METHOD(comm);
-		sensitive << near_boundary.pos();
-		sensitive << near_boundary.neg();
+		sensitive << near_boundary[0].pos();
+		sensitive << near_boundary[0].neg();
+		sensitive << near_boundary[1].pos();
+		sensitive << near_boundary[1].neg();
 		dont_initialize();
 	}
 };

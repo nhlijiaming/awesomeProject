@@ -20,8 +20,8 @@ SC_MODULE(human){
 		y_human2 = 36;
 		x_human3 = 4;
 		y_human3 = 49;
-		humsp0 = 0.5;
-		humsp1 = 1.5;
+		humsp0 = 10;
+		humsp1 = 10;
 		humsp2 = 1;
 		humsp3 = 2;
 		n = 0;

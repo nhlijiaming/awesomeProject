@@ -5,6 +5,7 @@
 environment::environment(void)
 {
 	/*Grid Map*/
+
 	// gridMap[][0] number, starting from 0
 	// gridMap[][1] x of up-left conner coordinate
 	// gridMap[][2] y of up-left conner coordinate
@@ -14,97 +15,6 @@ environment::environment(void)
 	// gridMap[][6] grid number of the right side
 	// gridMap[][7] grid number of the above
 	// gridMap[][8] grid number of the below
-
-	// gridMap[0][0] = 0;
-	// gridMap[0][1] = 0;
-	// gridMap[0][2] = 0;
-	// gridMap[0][3] = 1;
-	// gridMap[0][4] = -1;
-	// gridMap[0][5] = 0;
-	// gridMap[0][6] = 1;
-	// gridMap[0][7] = 0;
-	// gridMap[0][8] = 0;
-	// gridMap[1][0] = 1;
-	// gridMap[1][1] = 1;
-	// gridMap[1][2] = 0;
-	// gridMap[1][3] = 2;
-	// gridMap[1][4] = -1;
-	// gridMap[1][5] = 0;
-	// gridMap[1][6] = 2;
-	// gridMap[1][7] = 0;
-	// gridMap[1][8] = 0;
-	// gridMap[2][0] = 2;
-	// gridMap[2][1] = 2;
-	// gridMap[2][2] = 0;
-	// gridMap[2][3] = 3;
-	// gridMap[2][4] = -1;
-	// gridMap[2][5] = 1;
-	// gridMap[2][6] = 3;
-	// gridMap[2][7] = 0;
-	// gridMap[2][8] = 0;
-	// gridMap[3][0] = 3;
-	// gridMap[3][1] = 3;
-	// gridMap[3][2] = 0;
-	// gridMap[3][3] = 4;
-	// gridMap[3][4] = -1;
-	// gridMap[3][5] = 2;
-	// gridMap[3][6] = 4;
-	// gridMap[3][7] = 0;
-	// gridMap[3][8] = 0;
-	// gridMap[4][0] = 4;
-	// gridMap[4][1] = 4;
-	// gridMap[4][2] = 0;
-	// gridMap[4][3] = 5;
-	// gridMap[4][4] = -1;
-	// gridMap[4][5] = 3;
-	// gridMap[4][6] = 5;
-	// gridMap[4][7] = 0;
-	// gridMap[4][8] = 0;
-	// gridMap[5][0] = 5;
-	// gridMap[5][1] = 5;
-	// gridMap[5][2] = 0;
-	// gridMap[5][3] = 6;
-	// gridMap[5][4] = -1;
-	// gridMap[5][5] = 4;
-	// gridMap[5][6] = 6;
-	// gridMap[5][7] = 0;
-	// gridMap[5][8] = 0;
-	// gridMap[6][0] = 6;
-	// gridMap[6][1] = 6;
-	// gridMap[6][2] = 0;
-	// gridMap[6][3] = 7;
-	// gridMap[6][4] = -1;
-	// gridMap[6][5] = 5;
-	// gridMap[6][6] = 0;
-	// gridMap[6][7] = 0;
-	// gridMap[6][8] = 7;
-	// gridMap[7][0] = 7;
-	// gridMap[7][1] = 6;
-	// gridMap[7][2] = -1;
-	// gridMap[7][3] = 7;
-	// gridMap[7][4] = -2;
-	// gridMap[7][5] = 0;
-	// gridMap[7][6] = 0;
-	// gridMap[7][7] = 6;
-	// gridMap[7][8] = 8;
-	// gridMap[8][0] = 8;
-	// gridMap[8][1] = 6;
-	// gridMap[8][2] = -2;
-	// gridMap[8][3] = 7;
-	// gridMap[8][4] = -3;
-	// gridMap[8][5] = 0;
-	// gridMap[8][6] = 0;
-	// gridMap[8][7] = 7;
-	// gridMap[8][8] = 9;
-	// gridMap[9][0] = 9;
-	// gridMap[9][1] = 9;
-	// gridMap[9][2] = -3;
-	// gridMap[9][3] = 7;
-	// gridMap[9][4] = -4;
-	// gridMap[9][5] = 0;
-	// gridMap[9][6] = 0;
-	// gridMap[9][7] = 8;
-	// gridMap[9][8] = 0;
 
 
 	gridMap[0][0] = 0; 
@@ -551,7 +461,7 @@ environment::environment(void)
 	human[1].location[1] = -3.5;
 
 	robot[0].direction = 3;
-	robot[0].location[0] = 41;
+	robot[0].location[0] = 42;
 	robot[0].location[1] = 49;
 
 	robot[1].direction = 2;

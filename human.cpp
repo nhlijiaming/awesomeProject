@@ -8,27 +8,33 @@ void human::assignment(){
 	struct motionData a, b;
 	extern environment envir;
 
-	if (n  == 0){
-		//human 1 "L"
-		if (y_human1 < -0.5 ) 	y_human1 = y_human1 + humsp1 / 20;
-		else if (x_human1 >  humsp1 / 20)	x_human1 = x_human1 - humsp1 / 20;
-		else  n =  1;
+	//human 0 
+	if (y_human0 == 3  && x_human0 < 66) {
+		x_human0 = x_human0 + humsp0 / 20;
 	}
-	else {
-		if (x_human1 < 6.5) 	x_human1 = x_human1 + humsp1 / 20;
-		else if (y_human1 > -4 + humsp1/20 )	y_human1 = y_human1 - humsp1 / 20;
-		else n = 0;
+	else if (y_human0 < 49 && x_human0 == 66) {
+		y_human0 = y_human0 + humsp0 / 20;
+	}
+	else if (x_human0 > 4 && y_human0 == 49) {
+		x_human0 = x_human0 - humsp0 / 20;
+	}
+	else if (y_human0 >= 3 && x_human0 ==4 ) {
+		y_human0 = y_human0 - humsp0 / 20;
+	}
+	//human 1 
+	if (x_human1 == 66 && y_human1<24) {
+		y_human1 = y_human1 + humsp1 / 20;
+	}
+	else if (x_human1 > 20 && y_human1==24 ) {
+		x_human1 = x_human1 - humsp1 / 20;
+	}
+	else if (y_human1 > 3 && x_human1==20 ) {
+		y_human1 = y_human1 - humsp1 / 20;
+	}
+	else if (x_human1 < 66.0  && y_human1 == 3){
+		x_human1 = x_human1 + humsp1 / 20;
 	}
 
-	//human 0 "--"
-	if (m == 0){
-		if (x_human0 > humsp0/20 ) x_human0 = x_human0 - humsp0 / 20;
-		else m =  1;
-	}
-	else {
-		if (x_human0 < 7 - humsp0 / 20) x_human0 = x_human0 + humsp0 / 20;
-		else m = 0;
-	}
 	a.location[0] = x_human0;
 	a.location[1] = y_human0;
 	b.location[0] = x_human1;

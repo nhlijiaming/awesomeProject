@@ -62,7 +62,7 @@ int sc_main(int, char **)
 	sc_trace(wf, h1, "human1");
 	// for(i = 0; i < numberOfRobots ; i ++)
 	// {
-	i=0;
+	i=1;
 		sc_trace(wf, obstacle[i], "obstacle");
 		sc_trace(wf, velocity[i], "velocity");
 		sc_trace(wf, direction[i], "direction");
@@ -80,7 +80,6 @@ int sc_main(int, char **)
 
 
 	//cout << "boundary" << boundary << endl;
-
 
 	stream = fopen( "stream.dat", "w" );
 	for(int i = 0; i <= 100*20; i++)

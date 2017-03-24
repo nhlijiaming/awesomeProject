@@ -14,14 +14,18 @@ SC_MODULE(robot){
 	sc_out<bool> robot_is_crossing[numberOfRobots];
 
 	void motor();
-	void comm();
+	void comm0();
+	void comm1();
+
 	SC_CTOR(robot){
 		SC_METHOD(motor);
 		sensitive << clock.pos();
 		dont_initialize();
-		SC_METHOD(comm);
+		SC_METHOD(comm0);
 		sensitive << near_boundary[0].pos();
 		sensitive << near_boundary[0].neg();
+		dont_initialize();
+		SC_METHOD(comm1);
 		sensitive << near_boundary[1].pos();
 		sensitive << near_boundary[1].neg();
 		dont_initialize();

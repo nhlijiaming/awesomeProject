@@ -67,7 +67,10 @@ int sc_main(int, char **)
 		sc_trace(wf, direction[i], "direction");
 		sc_trace(wf, near_boundary[i], "near_boundary");
 		sc_trace(wf, robot_is_crossing[i], "robot_is_crossing");
+
 	// }
+
+	sc_trace(wf, envir.path[0][envir.path_pointer[0]], "path");
 
 	// s.direction = 0;
 	// s.location[0] = 6.5;

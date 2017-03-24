@@ -461,7 +461,7 @@ environment::environment(void)
 	human[1].location[1] = -3.5;
 
 	robot[0].direction = 3;
-	robot[0].location[0] = 41;
+	robot[0].location[0] = 42;
 	robot[0].location[1] = 49;
 
 	robot[1].direction = 2;

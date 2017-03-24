@@ -92,7 +92,7 @@ int sc_main(int, char **)
 		if (i%20 == 0)
 		{
 			cout << "@" << (int)envir.getTime() << "s  Robot0:("<<r0.location[0] << ", " << r0.location[1] << ") on grid "<< envir.getGridNumber(&r0) << endl;
-			//cout << "     Robot1:("<<r1.location[0] << ", " << r1.location[1] << ") on grid "<< envir.getGridNumber(&r1) << endl;
+			cout << "     Robot1:("<<r1.location[0] << ", " << r1.location[1] << ") on grid "<< envir.getGridNumber(&r1) << endl;
 		}
 		
 		human_clock = 1;

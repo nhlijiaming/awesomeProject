@@ -29,10 +29,12 @@ void server::assignment(){
 			for (n = 0; n < numberOfRobots; n++){
 				if (i != n){
 					if (nextGrid[i] == nextGrid[n] || nextGrid[i] == gridnum[n]) {
+						if (nextGrid[i] == nextGrid[n]){
 						cout << "Robot" << i << " & Robot " << n << " will be in the same grid" << endl;
-						occupied[i] = true;
 						cout << "Robot " << i << " will stop " << endl;
-						cout << "occupied" << i << "==" << occupied[i] << endl;
+						}
+						else cout << "next grid is occupied by Robot " << i << endl;
+						occupied[i] = true;
 					}
 					else occupied[i] = false;
 				}

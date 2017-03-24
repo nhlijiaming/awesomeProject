@@ -16,6 +16,7 @@ int sc_main(int, char **)
 	sc_signal<int> direction[numberOfRobots];
 	sc_signal<bool> near_boundary[numberOfRobots];
 	sc_signal<bool> robot_is_crossing[numberOfRobots];
+	FILE *stream;
 
 	float time;
 	int i;
@@ -61,7 +62,7 @@ int sc_main(int, char **)
 	sc_trace(wf, h1, "human1");
 	// for(i = 0; i < numberOfRobots ; i ++)
 	// {
-	i=0;
+	i=1;
 		sc_trace(wf, obstacle[i], "obstacle");
 		sc_trace(wf, velocity[i], "velocity");
 		sc_trace(wf, direction[i], "direction");
@@ -80,8 +81,8 @@ int sc_main(int, char **)
 
 	//cout << "boundary" << boundary << endl;
 
-
-	for(int i = 0; i <= 60*20; i++)
+	stream = fopen( "stream.dat", "w" );
+	for(int i = 0; i <= 100*20; i++)
 
 	{
 		time = envir.getTime();
@@ -110,8 +111,12 @@ int sc_main(int, char **)
 		robot_clock = 0;
 		sc_start(10, SC_NS);
 
+		fprintf(stream, "%.2f,%.2f,%.2f,%.2f,%.2f", time, r0.location[0], r0.location[1], r1.location[0], r1.location[1]);
+		fprintf(stream, ",%.2f,%.2f,%.2f,%.2f \n", h0.location[0], h0.location[1], h1.location[0], h1.location[1]);
+
 		envir.timeIncrement();
 	}
+	fclose(stream);
 	sc_close_vcd_trace_file(wf);
 	system("pause");
 	return 0;

@@ -685,22 +685,22 @@ float environment::distanceToGrid(int robotNumber,int targetGridNumber)
 	currentDirection = r->direction;
 	if (direction == currentDirection)
 	{
-		if (direction == 0 || direction == 1) // going up or down
-			distance += thisGrid[2] - thisGrid[4];
-		else if (direction == 2 || direction == 3) // going left or right
-			distance += thisGrid[3] - thisGrid[1];
+		if (direction == 0) // going up
+			distance += thisGrid[2] - r->location[1];
+		else if (direction == 1) // going down
+			distance += r->location[1] - thisGrid[4];
+		else if (direction == 2) // going left
+			distance += r->location[0] - thisGrid[1];
+		else if (direction == 3) // going right
+			distance += thisGrid[3] - r->location[0];
 	}
 	else
 	{
 		distance += sqrt((r->location[0] - centerx) * (r->location[0] - centerx) + (r->location[1] - centery) * (r->location[1] - centery));
-		if (direction == 0) // going up
-			distance += 0.5 * (thisGrid[2] - r->location[1]);
-		else if (direction == 1) // going down
-			distance += 0.5 * (r->location[1] - thisGrid[4]);
-		else if (direction == 2) // going left
-			distance += 0.5 * (r->location[0] - thisGrid[1]);
-		else if (direction == 3) // going right
-			distance += 0.5 * (thisGrid[3] - r->location[0]);
+		if (direction == 0) // going up or down
+			distance += 0.5 * (thisGrid[2] - thisGrid[4]);
+		else if (direction == 2) // going left or right
+			distance += 0.5 * (thisGrid[3] - thisGrid[1]);
 	}
 	currentDirection = direction;
 

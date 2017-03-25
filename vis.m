@@ -1,13 +1,23 @@
 global text1 slider1 NewImageShowHandle map data
+map = csvread('map.csv');
+data = csvread('stream.csv');
+if (1)
+    for i = 1:2
+        subplot(4,1,i);
+        plot(data(:, 1), data(:, 9+i));
+        ylim([-0.1 2.1]);
+        xlabel('Time(s)');
+        ylabel('Speed');
+        title(['Robot ' num2str(i)]);
+    end
+    pause
+end
+
 MainFigure = figure('menubar','none','numbertitle','off','position',[100 100 1200 600],'name','slide and text');
 text1 = uicontrol('style','edit','parent',MainFigure,'position',[130 13 50 20],'string','0','callback',@text1_callback);
 slider1 = uicontrol('style','slider','parent',MainFigure,'position',[200 15 800 15],'callback',@slider1_callback);
-
-map = csvread('map.csv');
-data = csvread('stream.csv');
 slider1.Min = 0;
 slider1.Max = (length(data)-1)*0.05;
-
 slider1.SliderStep = [1/20/slider1.Max 60*1/20/slider1.Max];
 
 border = 2;

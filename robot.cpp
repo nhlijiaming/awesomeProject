@@ -10,8 +10,6 @@ void robot::motor(){
 	{
 		thisRobot = envir.getRobotLocation(i);
 		deltaDistance = period * velocity[i].read();
-		if (envir.checkRobotIfArrived(i))
-			continue;
 
 		if (!obstacle[i])
 		{

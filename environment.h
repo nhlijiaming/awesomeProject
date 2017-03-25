@@ -47,6 +47,7 @@ public:
 	struct motionData robot[numberOfRobots];
 	int path[numberOfRobots][numberOfGrids+1];
 	int path_pointer[numberOfRobots];
+	float robotStartTime[numberOfRobots];
 	float time;
 	bool stop;
 

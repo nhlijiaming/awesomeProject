@@ -8,8 +8,11 @@ void server::assignment(){
 	bool changed, printout;
 
 	printout = false;
-	for(i = 0; i < numberOfRobots ; i ++)
-		v[i] = 1.0;
+	for (i = 0; i < numberOfRobots; i++)
+		if (envir.checkRobotIfArrived(i) || envir.robotStartTime[i] > envir.time)
+			v[i] = 0.0;
+		else
+			v[i] = 1.0;
 
 	for(i = 0 ; i < numberOfRobots ; i ++)
 	{

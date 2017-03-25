@@ -29,7 +29,7 @@ void robot::comm0() {
 	if (!near_boundary[0])
 		{
 			envir.moveRobotToNextGrid(0);
-			cout << "Robot "<< 0 << " crossed boundary."<<near_boundary[0]<<endl;
+			cout << "Robot "<< 0 << " crossed boundary. Now on grid: " << envir.getGridNumber(envir.getRobotLocation(0)) << endl;
 		}
 	return;
 }
@@ -39,7 +39,7 @@ void robot::comm1() {
 	if (!near_boundary[1])
 		{
 			envir.moveRobotToNextGrid(1);
-			cout << "Robot "<< 1 << " crossed boundary. Next boundary: " << envir.getRobotNextGridNumber(1) << endl;
+			cout << "Robot "<< 1 << " crossed boundary. Now on grid: " << envir.getGridNumber(envir.getRobotLocation(1)) << endl;
 		}
 	return;
 }

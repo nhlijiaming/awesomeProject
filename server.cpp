@@ -2,63 +2,64 @@
 #include "server.h"
 
 void server::assignment(){
-	struct motionData *coordinate;
-	int nextGrid[numberOfRobots];
-	//int d = robot.direction,i;
-	int i, j;
-	bool occupied[numberOfRobots] = {false};
-	int gridnum[numberOfRobots];
+	int i, j, k;
+	double v[numberOfRobots];
+	double distanceToMeetingPoint, distanceToLeaveMeetingPoint;
+	bool changed, printout;
+
+	printout = false;
+	for(i = 0; i < numberOfRobots ; i ++)
+		v[i] = 1.0;
 	
-
-	cout << "gridnum: ";
-	for (i = 0; i < numberOfRobots; i++)
+	// cout << "velocity: " << v[0] << " " << v[1] << endl;
+	// cout << " ======= " << endl;
+	for(i = 0 ; i < numberOfRobots ; i ++)
 	{
-		coordinate = envir.getRobotLocation(i);
-		gridnum[i] = envir.getGridNumber(coordinate);
-		cout << gridnum[i] << " ";
-	}
-	cout << endl;
-
-	/*occupied detection*/
-	for (i = 0; i < numberOfRobots; i++)
-	{
-		if (robot_is_crossing[i]){
-			nextGrid[i] = envir.getRobotNextGridNumber(i);
-			cout << "Robot " << i << " is crossing. Next Grid: " << nextGrid[i] << endl;
-			for (j = 0; j < numberOfRobots; j++)
+		changed = false;
+		for(j = envir.path_pointer[i]-1 ; j <= envir.path[i][0] ; j ++)
+		{
+			if (envir.isMeetingPoint(envir.path[i][j]))
 			{
-				if (i != j)
+				for(k = i + 1 ; k < numberOfRobots ; k ++)
+				if (i != k)
 				{
-					if (nextGrid[i] == nextGrid[j] || nextGrid[i] == gridnum[j]) {
-						cout << "Robot" << i << " & Robot" << j << " will be in the same grid" << endl;
-						occupied[i] = true;
-						cout << "Robot" << i << " will stop " << endl;
-						cout << "occupied[" << i << "] = " << occupied[i] << endl;
-						break;
+					distanceToMeetingPoint = envir.distanceToGrid(k, envir.path[i][j]);
+					if (distanceToMeetingPoint < 99999)
+					{
+						distanceToLeaveMeetingPoint = envir.distanceToGrid(i, envir.path[i][j+1]);
+						if (distanceToLeaveMeetingPoint > distanceToMeetingPoint && distanceToMeetingPoint > 0.01)
+						{
+							changed = true;
+							printout = true;
+							cout << "meetingpoint: " << envir.path[i][j] << endl;
+							v[i] = distanceToLeaveMeetingPoint / (distanceToMeetingPoint / v[k]); // assume that the kth-Robot is move at 1.0m/s
+							if (v[i] > 2.0 && distanceToLeaveMeetingPoint > 0.01) //even ith-Robot speed up as it can, it still not fast enough. Needs to slow down kth-Robot
+							{
+								v[i] = 2.0;
+								v[k] = distanceToMeetingPoint / (distanceToLeaveMeetingPoint / 2.0);
+							} 
+							cout << "distanceToLeaveMeetingPoint: " << distanceToLeaveMeetingPoint << " distanceToMeetingPoint:" << distanceToMeetingPoint << endl;
+							cout << "velocity: " << v[0] << " " << v[1] << endl;
+						}
 					}
-					else occupied[i] = false;
 				}
 			}
+			if (changed)
+				break;
 		}
+	}
+	// cout << " ---------- " << endl;
+
+	if (printout)
+	{
+		cout <<"velocity: ";
+		for (i = 0; i < numberOfRobots; i++)
+			cout << v[i] << " ";
+		cout << endl;
 	}
 
-	cout << "occupied: ";
 	for (i = 0; i < numberOfRobots; i++)
-		cout <<  occupied[i] << " " ;
-	cout << endl <<"velocity: ";
-	for (i = 0; i < numberOfRobots; i++)
-	{
-		if (occupied[i])
-		{
-			velocity[i] = 0.0;
-			cout << velocity[i] << " ";
-		}
-		else {
-			velocity[i] = 1.0;
-			cout << velocity[i] << " ";
-		}
-	}
-	cout << endl;
+		velocity[i] = (float)v[i];
 	
 } 
 

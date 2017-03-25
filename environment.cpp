@@ -452,13 +452,15 @@ environment::environment(void)
 
 	time = 0.0;
 
+	stop = false;
+
 	human[0].direction = 0;
-	human[0].location[0] = 6.5;
-	human[0].location[1] = -0.5;
+	human[0].location[0] = 4.5;
+	human[0].location[1] = 3.0;
 
 	human[1].direction = 0;
-	human[1].location[0] = 6.5;
-	human[1].location[1] = -3.5;
+	human[1].location[0] = 66;
+	human[1].location[1] = 3.5;
 
 	robot[0].direction = 3;
 	robot[0].location[0] = 42;
@@ -492,6 +494,17 @@ environment::environment(void)
 	path[1][5] = 35;
 	path[1][6] = 36;
 	path[1][7] = 27;
+
+
+	for(int i = 0 ; i < numberOfRobots ; i ++)
+		for(int j = i + 1 ; j < numberOfRobots ; j ++)
+			for(int p = 1 ; p <= path[i][0] ; p ++)
+				for(int q = 1 ; q <= path[j][0] ; q ++)
+					if (path[i][p] == path[j][q])
+					{
+						meetingpoint[path[i][p]] = true;
+						cout << path[i][p] << " is a meetingpoint." << endl;
+					}
 }
 
 int (*environment::getMap(void))[9]{
@@ -628,14 +641,16 @@ float environment::distanceToGrid(int robotNumber,int targetGridNumber)
 		return 0.0;
 
 	n = 0;
-	for(int i = 1; i <= path[robotNumber][0] ; i ++)
+	for(int i = path_pointer[robotNumber]; i <= path[robotNumber][0] ; i ++)
 		if (path[robotNumber][i] == targetGridNumber)
 		{
 			n = i;
 			break;
 		}
-	if (n < path_pointer[0])
-		return 9999999;	//has passed or will never arrive the targer grid
+	if (n == 0)
+	{
+		return 9999999.9;	//has passed or will never arrive the targer grid
+	}
 
 
 	pointer = path_pointer[robotNumber];
@@ -645,6 +660,14 @@ float environment::distanceToGrid(int robotNumber,int targetGridNumber)
 	centerx = ((float)thisGrid[1] + (float)thisGrid[3]) / 2;
 	centery = ((float)thisGrid[2] + (float)thisGrid[4]) / 2;
 	direction = 0;
+	if (gridNumber == nextGridNumber) // to avoid gridNumber==nextGridNumber, happens when crossed just right now
+	{
+		gridNumber = path[robotNumber][pointer-1];
+		thisGrid = getGrid(gridNumber);
+		centerx = ((float)thisGrid[1] + (float)thisGrid[3]) / 2;
+		centery = ((float)thisGrid[2] + (float)thisGrid[4]) / 2;
+		direction = 0;
+	}
 	if (thisGrid[5] == nextGridNumber) // facing west side
 		direction = 2;
 	else if (thisGrid[6] == nextGridNumber) // facing east side
@@ -653,7 +676,10 @@ float environment::distanceToGrid(int robotNumber,int targetGridNumber)
 		direction = 0;
 	else if (thisGrid[8] == nextGridNumber) // facing south side
 		direction = 1;
-	else cout << "**************************   ERR @ environment::distanceToGrid : grid " << gridNumber << " has no neighbor "<< nextGridNumber <<".  ***************************" << endl;
+	else {
+		cout << "**************************   ERR @ environment::distanceToGrid : grid " << gridNumber << " has no neighbor "<< nextGridNumber <<".  ***************************" << endl;
+		stop = true;
+	}
 
 	distance = 0.0;
 	currentDirection = r->direction;
@@ -698,7 +724,10 @@ float environment::distanceToGrid(int robotNumber,int targetGridNumber)
 			direction = 0;
 		else if (thisGrid[8] == nextGridNumber) // facing south side
 			direction = 1;
-		else cout << "**************************   ERR @ environment::distanceToGrid : grid " << gridNumber << " has no neighbor "<< nextGridNumber <<".  ***************************" << endl;
+		else {
+			cout << "**************************   ERR @ environment::distanceToGrid in path : grid " << gridNumber << " has no neighbor "<< nextGridNumber <<".  ***************************" << endl;
+			stop = true;
+		}
 
 		if (direction == currentDirection)
 		{

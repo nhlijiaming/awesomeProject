@@ -2,7 +2,7 @@
 #define __ENVIR__H
 #include "systemc.h"
 
-#define numberOfGrids 47
+#define numberOfGrids 48
 #define numberOfRobots 2
 #define numberOfHumans 2
 
@@ -48,6 +48,7 @@ public:
 	int path[numberOfRobots][numberOfGrids+1];
 	int path_pointer[numberOfRobots];
 	float time;
+	bool stop;
 
 public:
 	environment(void);

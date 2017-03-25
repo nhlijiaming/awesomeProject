@@ -50,7 +50,7 @@ void sensor::dosens(){
 
 
 
-		if ((x-centerx) * (x-centerx) + (y-centery) * (y-centery) <= 0.002)
+		if ((x-centerx) * (x-centerx) + (y-centery) * (y-centery) <= 0.011)
 		{
 			// should turn and ready to move to next objective grid
 			nextGridNumber = envir.getRobotNextGridNumber(robotNumber);
@@ -64,7 +64,10 @@ void sensor::dosens(){
 				direction[robotNumber] = 0;
 			else if (thisGrid[8] == nextGridNumber) // facing south side
 				direction[robotNumber] = 1;
-			else cout << "**************************   ERR: grid " << gridNumber << " has no neighbor "<< nextGridNumber << " for robot " << robotNumber << ".  ***************************" << endl;
+			else {
+				cout << "**************************   ERR: grid " << gridNumber << " has no neighbor "<< nextGridNumber << " for robot " << robotNumber << ".  ***************************" << endl;
+				envir.stop = true;
+			}
 		}
 	}
 

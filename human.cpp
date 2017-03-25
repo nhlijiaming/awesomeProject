@@ -5,7 +5,7 @@
 void human::assignment(){
 	/*human moving*/
 
-	struct motionData a, b;
+	struct motionData a, b, c, d;
 	extern environment envir;
 
 	//human 0 
@@ -34,13 +34,19 @@ void human::assignment(){
 	else if (x_human1 < 66.0  && y_human1 == 3){
 		x_human1 = x_human1 + humsp1 / 20;
 	}
-
 	a.location[0] = x_human0;
 	a.location[1] = y_human0;
 	b.location[0] = x_human1;
 	b.location[1] = y_human1;
+	c.location[0] = x_human2;
+	c.location[1] = y_human2;
+	d.location[0] = x_human3;
+	d.location[1] = y_human3;
+
 	envir.setHumanLocation(0, &a);
 	envir.setHumanLocation(1, &b);
+	envir.setHumanLocation(2, &c);
+	envir.setHumanLocation(3, &d);
 }
 
 

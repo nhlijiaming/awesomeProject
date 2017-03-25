@@ -9,8 +9,8 @@ environment envir;
 
 int sc_main(int, char **)
 {
-	struct motionData r0, r1, h0, h1;
-	sc_signal<bool> robot_clock, sensor_clock, human_clock;
+	struct motionData r0, r1, h0, h1, h2, h3;
+	sc_signal<bool> robot_clock, sensor_clock, human_clock, sever_clock;
 	sc_signal<bool> obstacle[numberOfRobots];
 	sc_signal<float> velocity[numberOfRobots];
 	sc_signal<int> direction[numberOfRobots];
@@ -22,6 +22,7 @@ int sc_main(int, char **)
 	int i;
 
 	server hq("SERVER");
+	hq.clk(sever_clock);
 	for(i = 0; i < numberOfRobots ; i ++)
 	{
 		hq.robot_is_crossing[i](robot_is_crossing[i]);
@@ -60,6 +61,8 @@ int sc_main(int, char **)
 	sc_trace(wf, r1, "robot1");
 	sc_trace(wf, h0, "human0");
 	sc_trace(wf, h1, "human1");
+	sc_trace(wf, h2, "human2");
+	sc_trace(wf, h3, "human3");
 	// for(i = 0; i < numberOfRobots ; i ++)
 	// {
 	i=1;
@@ -81,19 +84,24 @@ int sc_main(int, char **)
 
 	//cout << "boundary" << boundary << endl;
 
-	stream = fopen( "stream.dat", "w" );
+	stream = fopen( "stream.csv", "w" );
 	for(int i = 0; i <= 100*20; i++)
-
 	{
+		if (envir.stop)
+			break;
+
 		time = envir.getTime();
 		h0 = *(envir.getHumanLocation(0));
 		h1 = *(envir.getHumanLocation(1));
+		h2 = *(envir.getHumanLocation(2));
+		h3 = *(envir.getHumanLocation(3));
 		r0 = *(envir.getRobotLocation(0));
 		r1 = *(envir.getRobotLocation(1));
 		if (i%20 == 0)
 		{
 			cout << "@" << (int)envir.getTime() << "s  Robot0:("<<r0.location[0] << ", " << r0.location[1] << ") on grid "<< envir.getGridNumber(&r0) << endl;
 			cout << "     Robot1:("<<r1.location[0] << ", " << r1.location[1] << ") on grid "<< envir.getGridNumber(&r1) << endl;
+			cout << "D: " << envir.distanceToGrid(0,39) << ", " << envir.distanceToGrid(1,45) << endl;
 		}
 		
 		human_clock = 1;
@@ -111,8 +119,15 @@ int sc_main(int, char **)
 		robot_clock = 0;
 		sc_start(10, SC_NS);
 
+		sever_clock = 1;
+		sc_start(10, SC_NS);
+		sever_clock = 0;
+		sc_start(10, SC_NS);
+
 		fprintf(stream, "%.2f,%.2f,%.2f,%.2f,%.2f", time, r0.location[0], r0.location[1], r1.location[0], r1.location[1]);
-		fprintf(stream, ",%.2f,%.2f,%.2f,%.2f \n", h0.location[0], h0.location[1], h1.location[0], h1.location[1]);
+		fprintf(stream, ",%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f", h0.location[0], h0.location[1], h1.location[0], h1.location[1], h2.location[0], h2.location[1], h3.location[0], h3.location[1]);
+		fprintf(stream, ",%.2f,%.2f", velocity[0].read(), velocity[1].read());
+		fprintf(stream,  " \n");
 
 		envir.timeIncrement();
 	}

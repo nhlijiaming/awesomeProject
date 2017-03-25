@@ -7,7 +7,7 @@ void human::assignment(){
 
 	struct motionData a, b, c, d;
 	extern environment envir;
-	cout << "human";	cout << "(" << x_human0 << "," << y_human0 << ")" ;
+	cout << "human";	cout << "(" << x_human3 << "," << y_human3  << ")" ;
 	//human 0 
 	if (y_human0 == 3  && x_human0 < 66) {
 		x_human0 = x_human0 + humsp0 / 20;
@@ -25,13 +25,13 @@ void human::assignment(){
 	if (x_human1 == 66 && y_human1<24) {
 		y_human1 = y_human1 + humsp1 / 20;
 	}
-	else if (x_human1 > 20 && y_human1==24 ) {
+	else if (x_human1 > 20 && y_human1 <= 24.1 && y_human1 > 24) {
 		x_human1 = x_human1 - humsp1 / 20;
 	}
-	else if (y_human1 > 3 && x_human1==20 ) {
+	else if (y_human1 > 3 && x_human1 >= 19.9) {
 		y_human1 = y_human1 - humsp1 / 20;
 	}
-	else if (x_human1 < 66.0  && y_human1 == 3){
+	else if (x_human1 < 66.0  && y_human1 >=2.9){
 		x_human1 = x_human1 + humsp1 / 20;
 	}
 
@@ -39,10 +39,10 @@ void human::assignment(){
 	if (y_human2 == 36 && x_human2 > 39) {
 		x_human2 = x_human2 - humsp2 / 20;
 	}
-	else if (y_human2 > 24 && x_human2 == 39) {
+	else if (y_human2 > 24 && x_human2 >= 38.9&& x_human2 < 39.1) {
 		y_human2 = y_human2 - humsp2 / 20;
 	}
-	else if (x_human2 < 66 && y_human2 == 24) {
+	else if (x_human2 < 66 && y_human2 >= 23.9&& y_human2 < 24.1) {
 		x_human2 = x_human2 + humsp2 / 20;
 	}
 	else if (y_human2 <= 36 && x_human2 == 66) {
@@ -53,10 +53,10 @@ void human::assignment(){
 	if (x_human3 == 4 && y_human3 > 36) {
 		y_human3 = y_human3 - humsp3 / 20;
 	}
-	else if (x_human3 < 66 && y_human3 == 36) {
+	else if (x_human3 < 66 && y_human3 >= 35.9 && y_human3 <= 36.1) {
 		x_human3 = x_human3 + humsp3 / 20;
 	}
-	else if (y_human3 < 49 && x_human3 == 66) {
+	else if (y_human3 < 49 && x_human3 >=65.9 && x_human3 <= 66.1) {
 		y_human3 = y_human3 + humsp3 / 20;
 	}
 	else if (x_human3 > 4 && y_human3 == 49){
@@ -73,7 +73,7 @@ void human::assignment(){
 	d.location[0] = x_human3;
 	d.location[1] = y_human3;
 
-	cout << "(" << x_human0 << "," << y_human0 << ")" << humsp0 << endl;
+	cout << "(" << x_human3 << "," << y_human3 << ")" << endl;
 
 	envir.setHumanLocation(0, &a);
 	envir.setHumanLocation(1, &b);

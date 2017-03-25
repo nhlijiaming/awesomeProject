@@ -24,17 +24,17 @@ function draw_map(t)
         rectangle('Position',p,'LineWidth',0.6,'LineStyle','-','FaceColor',[0.8 1.0 0.8],'Parent',NewImageShowHandle);
         text(map(i,2),map(i,5)+0.6,num2str(i-1),'Parent',NewImageShowHandle)
     end
-%     plot(data(k,2),data(k,3),'b*','Parent',NewImageShowHandle);
-%     text(data(k,2)-1,data(k,3)+1,'Robot 0','Color','b','Parent',NewImageShowHandle)
-%     
-%     plot(data(k,4),data(k,5),'b*','Parent',NewImageShowHandle);
-%     text(data(k,4)-1,data(k,5)+1,'Robot 1','Color','b','Parent',NewImageShowHandle)
-% 
-%     plot(data(k,6),data(k,7),'r*','Parent',NewImageShowHandle);
-%     text(data(k,6)-1,data(k,7)+1,'Human 0','Color','r','Parent',NewImageShowHandle)
-% 
-%     plot(data(k,8),data(k,9),'r*','Parent',NewImageShowHandle);
-%     text(data(k,8)-1,data(k,9)+1,'Human 1','Color','r','Parent',NewImageShowHandle)
+    plot(data(k,2),data(k,3),'b*','Parent',NewImageShowHandle);
+    text(data(k,2)-1,data(k,3)+1,'Robot 0','Color','b','Parent',NewImageShowHandle)
+    
+    plot(data(k,4),data(k,5),'b*','Parent',NewImageShowHandle);
+    text(data(k,4)-1,data(k,5)+1,'Robot 1','Color','b','Parent',NewImageShowHandle)
+
+    plot(data(k,6),data(k,7),'r*','Parent',NewImageShowHandle);
+    text(data(k,6)-1,data(k,7)+1,'Human 0','Color','r','Parent',NewImageShowHandle)
+
+    plot(data(k,8),data(k,9),'r*','Parent',NewImageShowHandle);
+    text(data(k,8)-1,data(k,9)+1,'Human 1','Color','r','Parent',NewImageShowHandle)
 
 end
 

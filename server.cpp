@@ -5,7 +5,7 @@ void server::assignment(){
 	struct motionData *coordinate;
 	int nextGrid[numberOfRobots];
 	//int d = robot.direction,i;
-	int i, j, n , l;
+	int i, j;
 	bool occupied[numberOfRobots] = {false};
 	int gridnum[numberOfRobots];
 	
@@ -25,34 +25,37 @@ void server::assignment(){
 		if (robot_is_crossing[i]){
 			nextGrid[i] = envir.getRobotNextGridNumber(i);
 			cout << "Robot " << i << " is crossing. Next Grid: " << nextGrid[i] << endl;
-	
-			for (n = 0; n < numberOfRobots; n++){
-				if (i != n){
-					if (nextGrid[i] == nextGrid[n] || nextGrid[i] == gridnum[n]) {
-						cout << "Robot" << i << " & Robot " << n << " will be in the same grid" << endl;
+			for (j = 0; j < numberOfRobots; j++)
+			{
+				if (i != j)
+				{
+					if (nextGrid[i] == nextGrid[j] || nextGrid[i] == gridnum[j]) {
+						cout << "Robot" << i << " & Robot" << j << " will be in the same grid" << endl;
 						occupied[i] = true;
-						cout << "Robot " << i << " will stop " << endl;
-						cout << "occupied" << i << "==" << occupied[i] << endl;
+						cout << "Robot" << i << " will stop " << endl;
+						cout << "occupied[" << i << "] = " << occupied[i] << endl;
+						break;
 					}
 					else occupied[i] = false;
 				}
 			}
 		}
 	}
+
 	cout << "occupied: ";
-	for (j = 0; j < numberOfRobots; j++)
-		cout <<  occupied[j] << " " ;
+	for (i = 0; i < numberOfRobots; i++)
+		cout <<  occupied[i] << " " ;
 	cout << endl <<"velocity: ";
-	for (l = 0; l < numberOfRobots; l++)
+	for (i = 0; i < numberOfRobots; i++)
 	{
-		if (occupied[l])
+		if (occupied[i])
 		{
-			velocity[l] = 0.0;
-			cout << velocity[l] << " ";
+			velocity[i] = 0.0;
+			cout << velocity[i] << " ";
 		}
 		else {
-			velocity[l] = 1.0;
-			cout << velocity[l] << " ";
+			velocity[i] = 1.0;
+			cout << velocity[i] << " ";
 		}
 	}
 	cout << endl;

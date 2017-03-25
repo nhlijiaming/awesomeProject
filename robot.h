@@ -16,6 +16,8 @@ SC_MODULE(robot){
 	void motor();
 	void comm0();
 	void comm1();
+	void comm2();
+	void comm3();
 
 	SC_CTOR(robot){
 		SC_METHOD(motor);
@@ -28,6 +30,14 @@ SC_MODULE(robot){
 		SC_METHOD(comm1);
 		sensitive << near_boundary[1].pos();
 		sensitive << near_boundary[1].neg();
+		dont_initialize();
+		SC_METHOD(comm2);
+		sensitive << near_boundary[2].pos();
+		sensitive << near_boundary[2].neg();
+		dont_initialize();
+		SC_METHOD(comm3);
+		sensitive << near_boundary[3].pos();
+		sensitive << near_boundary[3].neg();
 		dont_initialize();
 	}
 };

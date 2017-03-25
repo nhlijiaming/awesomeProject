@@ -3,7 +3,7 @@
 #include "systemc.h"
 
 #define numberOfGrids 48
-#define numberOfRobots 2
+#define numberOfRobots 4
 #define numberOfHumans 4
 
 #define period 0.05

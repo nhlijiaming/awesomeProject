@@ -11,7 +11,7 @@ void robot::motor(){
 		thisRobot = envir.getRobotLocation(i);
 		deltaDistance = period * velocity[i].read();
 		if (envir.checkRobotIfArrived(i))
-			return;
+			continue;
 
 		if (!obstacle[i])
 		{
@@ -41,6 +41,26 @@ void robot::comm1() {
 			envir.moveRobotToNextGrid(1);
 			cout << "Robot "<< 1 << " crossed boundary. Now on grid: " << envir.getGridNumber(envir.getRobotLocation(1)) << endl;
 		}
+	return;
+}
+
+void robot::comm2() {
+	robot_is_crossing[2].write(near_boundary[2].read());
+	if (!near_boundary[2])
+	{
+		envir.moveRobotToNextGrid(2);
+		cout << "Robot " << 2 << " crossed boundary. Now on grid: " << envir.getGridNumber(envir.getRobotLocation(2)) << endl;
+	}
+	return;
+}
+
+void robot::comm3() {
+	robot_is_crossing[3].write(near_boundary[3].read());
+	if (!near_boundary[3])
+	{
+		envir.moveRobotToNextGrid(3);
+		cout << "Robot " << 3 << " crossed boundary. Now on grid: " << envir.getGridNumber(envir.getRobotLocation(3)) << endl;
+	}
 	return;
 }
 

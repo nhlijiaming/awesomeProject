@@ -20,6 +20,8 @@ SC_MODULE(sensor){
 	SC_CTOR(sensor){
 		direction[0].initialize(3);
 		direction[1].initialize(2);
+		direction[2].initialize(2);
+		direction[3].initialize(2);
 
 		SC_METHOD(dosens);
 		gridMap = envir.getMap();

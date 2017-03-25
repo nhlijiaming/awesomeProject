@@ -9,7 +9,7 @@ environment envir;
 
 int sc_main(int, char **)
 {
-	struct motionData r0, r1, h0, h1, h2, h3;
+	struct motionData r0, r1, r2, r3, h0, h1, h2, h3;
 	sc_signal<bool> robot_clock, sensor_clock, human_clock, sever_clock;
 	sc_signal<bool> obstacle[numberOfRobots];
 	sc_signal<float> velocity[numberOfRobots];
@@ -59,6 +59,8 @@ int sc_main(int, char **)
 
 	sc_trace(wf, r0, "robot0");
 	sc_trace(wf, r1, "robot1");
+	sc_trace(wf, r2, "robot2");
+	sc_trace(wf, r3, "robot3");
 	sc_trace(wf, h0, "human0");
 	sc_trace(wf, h1, "human1");
 	sc_trace(wf, h2, "human2");
@@ -97,11 +99,15 @@ int sc_main(int, char **)
 		h3 = *(envir.getHumanLocation(3));
 		r0 = *(envir.getRobotLocation(0));
 		r1 = *(envir.getRobotLocation(1));
+		r2 = *(envir.getRobotLocation(2));
+		r3 = *(envir.getRobotLocation(3));
 		if (i%20 == 0)
 		{
 			cout << "@" << (int)envir.getTime() << "s  Robot0:("<<r0.location[0] << ", " << r0.location[1] << ") on grid "<< envir.getGridNumber(&r0) << endl;
-			cout << "     Robot1:("<<r1.location[0] << ", " << r1.location[1] << ") on grid "<< envir.getGridNumber(&r1) << endl;
-			cout << "D: " << envir.distanceToGrid(0,39) << ", " << envir.distanceToGrid(1,45) << endl;
+			cout << "     Robot1:(" << r1.location[0] << ", " << r1.location[1] << ") on grid " << envir.getGridNumber(&r1) << endl;
+			cout << "     Robot2:(" << r2.location[0] << ", " << r2.location[1] << ") on grid " << envir.getGridNumber(&r2) << endl;
+			cout << "     Robot3:(" << r3.location[0] << ", " << r3.location[1] << ") on grid " << envir.getGridNumber(&r3) << endl;
+			
 		}
 		
 		human_clock = 1;
@@ -124,9 +130,9 @@ int sc_main(int, char **)
 		sever_clock = 0;
 		sc_start(10, SC_NS);
 
-		fprintf(stream, "%.2f,%.2f,%.2f,%.2f,%.2f", time, r0.location[0], r0.location[1], r1.location[0], r1.location[1]);
+		fprintf(stream, "%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f", time, r0.location[0], r0.location[1], r1.location[0], r1.location[1], r2.location[0], r2.location[1], r3.location[0], r3.location[1]);
 		fprintf(stream, ",%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f", h0.location[0], h0.location[1], h1.location[0], h1.location[1], h2.location[0], h2.location[1], h3.location[0], h3.location[1]);
-		fprintf(stream, ",%.2f,%.2f", velocity[0].read(), velocity[1].read());
+		fprintf(stream, ",%.2f,%.2f,%.2f,%.2f", velocity[0].read(), velocity[1].read(), velocity[2].read(), velocity[3].read());
 		fprintf(stream,  " \n");
 
 		envir.timeIncrement();

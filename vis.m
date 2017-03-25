@@ -26,17 +26,23 @@ text(data(k,2)-1,data(k,3)+1,'Robot 0','Color','b','Parent',NewImageShowHandle)
 plot(data(k,4),data(k,5),'b*','Parent',NewImageShowHandle);
 text(data(k,4)-1,data(k,5)+1,'Robot 1','Color','b','Parent',NewImageShowHandle)
 
-plot(data(k,6),data(k,7),'r*','Parent',NewImageShowHandle);
-text(data(k,6)-1,data(k,7)+1,'Human 0','Color','r','Parent',NewImageShowHandle)
+plot(data(k,6),data(k,7),'b*','Parent',NewImageShowHandle);
+text(data(k,6)-1,data(k,7)+1,'Robot 2','Color','b','Parent',NewImageShowHandle)
 
-plot(data(k,8),data(k,9),'r*','Parent',NewImageShowHandle);
-text(data(k,8)-1,data(k,9)+1,'Human 1','Color','r','Parent',NewImageShowHandle)
+plot(data(k,8),data(k,9),'b*','Parent',NewImageShowHandle);
+text(data(k,8)-1,data(k,9)+1,'Robot 3','Color','b','Parent',NewImageShowHandle)
 
 plot(data(k,10),data(k,11),'r*','Parent',NewImageShowHandle);
-text(data(k,10)-1,data(k,11)+1,'Human 2','Color','r','Parent',NewImageShowHandle)
+text(data(k,10)-1,data(k,11)+1,'Human 0','Color','r','Parent',NewImageShowHandle)
 
 plot(data(k,12),data(k,13),'r*','Parent',NewImageShowHandle);
-text(data(k,12)-1,data(k,13)+1,'Human 3','Color','r','Parent',NewImageShowHandle)
+text(data(k,12)-1,data(k,13)+1,'Human 1','Color','r','Parent',NewImageShowHandle)
+
+plot(data(k,14),data(k,15),'r*','Parent',NewImageShowHandle);
+text(data(k,14)-1,data(k,15)+1,'Human 2','Color','r','Parent',NewImageShowHandle)
+
+plot(data(k,16),data(k,17),'r*','Parent',NewImageShowHandle);
+text(data(k,16)-1,data(k,17)+1,'Human 3','Color','r','Parent',NewImageShowHandle)
 
 
 function slider1_callback(hObject, event)
@@ -62,17 +68,23 @@ function slider1_callback(hObject, event)
     plot(data(k,4),data(k,5),'b*','Parent',NewImageShowHandle);
     text(data(k,4)-1,data(k,5)+1,'Robot 1','Color','b','Parent',NewImageShowHandle)
 
-    plot(data(k,6),data(k,7),'r*','Parent',NewImageShowHandle);
-    text(data(k,6)-1,data(k,7)+1,'Human 0','Color','r','Parent',NewImageShowHandle)
+    plot(data(k,6),data(k,7),'b*','Parent',NewImageShowHandle);
+    text(data(k,6)-1,data(k,7)+1,'Robot 2','Color','b','Parent',NewImageShowHandle)
 
-    plot(data(k,8),data(k,9),'r*','Parent',NewImageShowHandle);
-    text(data(k,8)-1,data(k,9)+1,'Human 1','Color','r','Parent',NewImageShowHandle)
+    plot(data(k,8),data(k,9),'b*','Parent',NewImageShowHandle);
+    text(data(k,8)-1,data(k,9)+1,'Robot 3','Color','b','Parent',NewImageShowHandle)
 
     plot(data(k,10),data(k,11),'r*','Parent',NewImageShowHandle);
-    text(data(k,10)-1,data(k,11)+1,'Human 2','Color','r','Parent',NewImageShowHandle)
+    text(data(k,10)-1,data(k,11)+1,'Human 0','Color','r','Parent',NewImageShowHandle)
 
     plot(data(k,12),data(k,13),'r*','Parent',NewImageShowHandle);
-    text(data(k,12)-1,data(k,13)+1,'Human 3','Color','r','Parent',NewImageShowHandle)
+    text(data(k,12)-1,data(k,13)+1,'Human 1','Color','r','Parent',NewImageShowHandle)
+
+    plot(data(k,14),data(k,15),'r*','Parent',NewImageShowHandle);
+    text(data(k,14)-1,data(k,15)+1,'Human 2','Color','r','Parent',NewImageShowHandle)
+
+    plot(data(k,16),data(k,17),'r*','Parent',NewImageShowHandle);
+    text(data(k,16)-1,data(k,17)+1,'Human 3','Color','r','Parent',NewImageShowHandle)
 
     pause(0.0001)
 end

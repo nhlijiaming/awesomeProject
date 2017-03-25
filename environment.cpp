@@ -699,7 +699,6 @@ float environment::distanceToGrid(int robotNumber,int targetGridNumber)
 		distance += sqrt((r->location[0] - centerx) * (r->location[0] - centerx) + (r->location[1] - centery) * (r->location[1] - centery));
 		if (direction == 0 || direction == 1){ // going up/down
 			distance += 0.5 * (thisGrid[2] - thisGrid[4]);
-			cout << "......go up and down........" << endl;
 		}
 		
 		else if (direction == 2 || direction == 3) // going left/right

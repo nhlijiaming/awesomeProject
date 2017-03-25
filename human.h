@@ -22,8 +22,8 @@ SC_MODULE(human){
 		y_human3 = 49;
 		humsp0 = 10;
 		humsp1 = 10;
-		humsp2 = 1;
-		humsp3 = 2;
+		humsp2 = 10;
+		humsp3 = 10;
 		n = 0;
 		m = 0;
 		SC_METHOD(assignment);

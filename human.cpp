@@ -7,7 +7,7 @@ void human::assignment(){
 
 	struct motionData a, b, c, d;
 	extern environment envir;
-	cout << "human";	cout << "(" << x_human3 << "," << y_human3  << ")" ;
+
 	//human 0 
 	if (y_human0 == 3  && x_human0 < 66) {
 		x_human0 = x_human0 + humsp0 / 20;
@@ -73,7 +73,6 @@ void human::assignment(){
 	d.location[0] = x_human3;
 	d.location[1] = y_human3;
 
-	cout << "(" << x_human3 << "," << y_human3 << ")" << endl;
 
 	envir.setHumanLocation(0, &a);
 	envir.setHumanLocation(1, &b);

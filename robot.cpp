@@ -15,7 +15,10 @@ void robot::motor(){
 		{
 			thisRobot->direction = direction[i].read();
 			envir.move(thisRobot, deltaDistance);
+			envir.robotSpeed[i] = velocity[i].read();
 		}
+		else
+			envir.robotSpeed[i] = 0.0;
 	}
 
 

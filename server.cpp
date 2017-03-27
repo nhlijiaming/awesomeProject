@@ -9,10 +9,7 @@ void server::assignment(){
 
 	printout = false;
 	for (i = 0; i < numberOfRobots; i++)
-		if (envir.checkRobotIfArrived(i) || envir.robotStartTime[i] > envir.time)
-			v[i] = 0.0;
-		else
-			v[i] = 1.0;
+		v[i] = 1.0;
 
 	for(i = 0 ; i < numberOfRobots ; i ++)
 	{
@@ -33,7 +30,7 @@ void server::assignment(){
 							changed = true;
 							printout = true;
 							cout << "meetingpoint: " << envir.path[i][j] << endl;
-							v[i] = distanceToLeaveMeetingPoint / (distanceToMeetingPoint / v[k]); // assume that the kth-Robot is move at 1.0m/s
+							v[i] = distanceToLeaveMeetingPoint / (distanceToMeetingPoint / 1.0); // assume that the kth-Robot is move at 1.0m/s
 							if (v[i] > 2.0 && distanceToLeaveMeetingPoint > 0.01) //even ith-Robot speed up as it can, it still not fast enough. Needs to slow down kth-Robot
 							{
 								v[i] = 2.0;
@@ -60,7 +57,10 @@ void server::assignment(){
 	}
 
 	for (i = 0; i < numberOfRobots; i++)
-		velocity[i] = (float)v[i];
+		if ((envir.checkRobotIfArrived(i)) || (envir.robotStartTime[i] > envir.time))
+			velocity[i] = 0.0;
+		else
+			velocity[i] = (float)v[i];
 	
 } 
 

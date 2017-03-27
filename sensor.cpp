@@ -50,7 +50,7 @@ void sensor::dosens(){
 
 
 
-		if ((x-centerx) * (x-centerx) + (y-centery) * (y-centery) <= 0.011)
+		if ((x-centerx) * (x-centerx) + (y-centery) * (y-centery) <= 0.013)
 		{
 			// should turn and ready to move to next objective grid
 			nextGridNumber = envir.getRobotNextGridNumber(robotNumber);

@@ -48,6 +48,7 @@ public:
 	int path[numberOfRobots][numberOfGrids+1];
 	int path_pointer[numberOfRobots];
 	float robotStartTime[numberOfRobots];
+	float robotSpeed[numberOfRobots];
 	float time;
 	bool stop;
 

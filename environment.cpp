@@ -473,17 +473,17 @@ environment::environment(void)
 	robot[0].direction = 3;
 	robot[0].location[0] = 42;
 	robot[0].location[1] = 49;
-	robotStartTime[0] = 5.0;
+	robotStartTime[0] = 30.0;
 
 	robot[1].direction = 2;
 	robot[1].location[0] = 56;
 	robot[1].location[1] = 49;
-	robotStartTime[1] = 5.0;
+	robotStartTime[1] = 20.0;
 
 	robot[2].direction = 2;
 	robot[2].location[0] = 41;
 	robot[2].location[1] = 14;
-	robotStartTime[2] = 0.0;
+	robotStartTime[2] = 15.0;
 
 	robot[3].direction = 2;
 	robot[3].location[0] = 26;
@@ -554,6 +554,9 @@ environment::environment(void)
 						meetingpoint[path[i][p]] = true;
 						cout << path[i][p] << " is a meetingpoint." << endl;
 					}
+	meetingpoint[26] = false;
+	meetingpoint[32] = false;
+
 }
 
 int (*environment::getMap(void))[9]{
@@ -634,7 +637,7 @@ int environment::getGridNumber(struct motionData* coordinate)
 	for (i = 0; i < numberOfGrids; i++){
 		if (y <= gridMap[i][2] && y > gridMap[i][4] && x >= gridMap[i][1] && x < gridMap[i][3]) return gridMap[i][0];
 	}
-	return 0;
+	return -1;
 }
 
 void environment::timeIncrement()
@@ -686,6 +689,12 @@ float environment::distanceToGrid(int robotNumber,int targetGridNumber)
 
 	r = getRobotLocation(robotNumber);
 	gridNumber = getGridNumber(r);
+	if (gridNumber == -1)
+	{
+		cout << "**************************   ERR @ environment::distanceToGrid : cannot find gridNumber for Robot " << robotNumber << " @ (" << r->location[0] << ',' << r->location[1] <<").  ***************************" << endl;
+		stop = true;
+		return 9999999.9;
+	}
 	if (gridNumber == targetGridNumber)
 		return 0.0;
 
@@ -713,6 +722,7 @@ float environment::distanceToGrid(int robotNumber,int targetGridNumber)
 	{
 		gridNumber = path[robotNumber][pointer-1];
 		thisGrid = getGrid(gridNumber);
+
 		centerx = ((float)thisGrid[1] + (float)thisGrid[3]) / 2;
 		centery = ((float)thisGrid[2] + (float)thisGrid[4]) / 2;
 		direction = 0;
@@ -726,8 +736,9 @@ float environment::distanceToGrid(int robotNumber,int targetGridNumber)
 	else if (thisGrid[8] == nextGridNumber) // facing south side
 		direction = 1;
 	else {
-		cout << "**************************   ERR @ environment::distanceToGrid : grid " << gridNumber << " has no neighbor " << nextGridNumber << " for Robot " << robotNumber << ".  ***************************" << endl;
+		cout << "**************************   ERR @ environment::distanceToGrid : grid " << gridNumber << " has no neighbor " << nextGridNumber << " for Robot " << robotNumber << " @ (" << r->location[0] << ',' << r->location[1] <<").  ***************************" << endl;
 		stop = true;
+		return 9999999.9;
 	}
 
 	distance = 0.0;

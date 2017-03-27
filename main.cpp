@@ -132,7 +132,7 @@ int sc_main(int, char **)
 
 		fprintf(stream, "%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f", time, r0.location[0], r0.location[1], r1.location[0], r1.location[1], r2.location[0], r2.location[1], r3.location[0], r3.location[1]);
 		fprintf(stream, ",%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f", h0.location[0], h0.location[1], h1.location[0], h1.location[1], h2.location[0], h2.location[1], h3.location[0], h3.location[1]);
-		fprintf(stream, ",%.2f,%.2f,%.2f,%.2f", velocity[0].read(), velocity[1].read(), velocity[2].read(), velocity[3].read());
+		fprintf(stream, ",%.2f,%.2f,%.2f,%.2f", envir.robotSpeed[0], envir.robotSpeed[1], envir.robotSpeed[2], envir.robotSpeed[3]);
 		fprintf(stream,  " \n");
 
 		envir.timeIncrement();

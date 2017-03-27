@@ -17,7 +17,7 @@ SC_MODULE(server){
 		velocity[2].initialize(1.0);
 		velocity[3].initialize(1.0);
 		SC_METHOD(assignment);
-		// sensitive << clk.pos();
+		sensitive << clk.pos();
 		sensitive << robot_is_crossing[0].pos() << robot_is_crossing[0].neg();
 		sensitive << robot_is_crossing[1].pos() << robot_is_crossing[1].neg();
 		sensitive << robot_is_crossing[2].pos() << robot_is_crossing[2].neg();
